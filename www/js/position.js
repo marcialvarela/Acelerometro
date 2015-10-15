@@ -63,6 +63,8 @@ function deviceMotionUpdate(e){
         Yposition.innerHTML = Y;
         Zposition.innerHTML = Z;
 
+
+/*
         var acceleration = e.acceleration;
         var X_a = acceleration.x.toFixed(2);
         var Y_a = acceleration.y.toFixed(2);
@@ -70,7 +72,7 @@ function deviceMotionUpdate(e){
         Xposition_a.innerHTML = X_a;
         Yposition_a.innerHTML = Y_a;
         Zposition_a.innerHTML = Z_a;
-
+*/
         var rotation = e.rotationRate;
         var X_r = rotation.alpha.toFixed(2);
         var Y_r = rotation.beta.toFixed(2);
