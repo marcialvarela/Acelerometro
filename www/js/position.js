@@ -9,12 +9,13 @@
  */
 
 function obtenerXYZ(){
-    alert('Entra obtenerXYZ');
 
     var sensorAcc = null;
     try
     {
+        alert('Antes getCurrentAcceleration');
         sensorAcc = navigator.accelerometer.getCurrentAcceleration(onSuccess, onError)
+        alert('Después getCurrentAcceleration');
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 
@@ -24,6 +25,7 @@ function obtenerXYZ(){
 function onSuccess(acceleration) {
     try
     {
+        alert('Entra onSuccess');
         alert('Acceleration X: ' + acceleration.x + '\n' +
         'Acceleration Y: ' + acceleration.y + '\n' +
         'Acceleration Z: ' + acceleration.z + '\n' +
