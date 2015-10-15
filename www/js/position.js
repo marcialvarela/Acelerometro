@@ -14,6 +14,7 @@ function obtenerXYZ(){
     try
     {
         alert('Antes getCurrentAcceleration');
+        alert(navigator.Accelerometer);
         sensorAcc = navigator.accelerometer.getCurrentAcceleration(onSuccess, onError)
         alert('Después getCurrentAcceleration');
     }
@@ -42,4 +43,35 @@ function onSuccess(acceleration) {
 //
 function onError() {
     alert('onError!');
+}
+
+
+function obtenerXYZ_2(e){
+
+    var sensorAcc = null;
+    try
+    {
+        alert('Antes deviceMotionUpdate');
+
+        window.addEventListener("devicemotion", deviceMotionUpdate, true);
+
+        alert('Después getCurrentAcceleration');
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function deviceMotionUpdate(e){
+    try{
+
+        //console.log("x: ", e.accelerationIncludingGravity.x);
+        //console.log("y: ", e.accelerationIncludingGravity.y);
+        //console.log("z: ", e.accelerationIncludingGravity.z);
+
+        Xposition.innerHTML = e.accelerationIncludingGravity.x;
+        Yposition.innerHTML = e.accelerationIncludingGravity.y;
+        Zposition.innerHTML = e.accelerationIncludingGravity.z;
+
+    }
+    catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
+
 }

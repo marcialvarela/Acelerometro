@@ -52,10 +52,16 @@
     </feature>
 
     <plugin name="Accelerometer" value="org.apache.cordova.AccelListener"/>
-    -->
     <feature name="Accelerometer">
         <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
     </feature>
+
+    -->
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.device-motion" />
+    </feature>
+
+
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
