@@ -56,13 +56,17 @@ function obtenerXYZ_Motion(e){
 function deviceMotionUpdate(e){
     try{
 
-        var X = e.accelerationIncludingGravity.x;
-        var Y = e.accelerationIncludingGravity.y;
-        var Z = e.accelerationIncludingGravity.z;
+        var X = e.accelerationIncludingGravity.x.toFixed(2);
+        var Y = e.accelerationIncludingGravity.y.toFixed(2);
+        var Z = e.accelerationIncludingGravity.z.toFixed(2);
 
-        Xposition.innerHTML = Math.round(X);
-        Yposition.innerHTML = Math.round(Y);
-        Zposition.innerHTML = Math.round(Z);
+        //Xposition.innerHTML = Math.round(X);
+        //Yposition.innerHTML = Math.round(Y);
+        //Zposition.innerHTML = Math.round(Z);
+
+        Xposition.innerHTML = X;
+        Yposition.innerHTML = Y;
+        Zposition.innerHTML = Z;
 
     }
     catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
