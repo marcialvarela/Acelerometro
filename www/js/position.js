@@ -6,6 +6,9 @@
 
  http://www.eldiario.es/hojaderouter/tecnologia/acelerometro-funciones-giroscopio-GPS-interior-magnetometro-sensor-sensor_de_humedad-sensor_de_temperatura-telefono_movil_0_275772515.html
 
+   orientation document:
+ http://www.html5rocks.com/en/tutorials/device/orientation/?redirect_from_locale=es
+
  */
 
 function obtenerXYZ(){
@@ -26,15 +29,9 @@ function obtenerXYZ(){
 function onSuccess(acceleration) {
     try
     {
-        alert('Entra onSuccess');
-        alert('Acceleration X: ' + acceleration.x + '\n' +
-        'Acceleration Y: ' + acceleration.y + '\n' +
-        'Acceleration Z: ' + acceleration.z + '\n' +
-        'Timestamp: '      + acceleration.timestamp + '\n');
-
         Xposition.innerHTML = acceleration.x;
-        Yposition.innerHTML = acceleration.x;
-        Zposition.innerHTML = acceleration.x;
+        Yposition.innerHTML = acceleration.y;
+        Zposition.innerHTML = acceleration.z;
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -46,16 +43,12 @@ function onError() {
 }
 
 
-function obtenerXYZ_2(e){
+function obtenerXYZ_Motion(e){
 
     var sensorAcc = null;
     try
     {
-        alert('Antes deviceMotionUpdate');
-
         window.addEventListener("devicemotion", deviceMotionUpdate, true);
-
-        alert('Después getCurrentAcceleration');
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -63,13 +56,13 @@ function obtenerXYZ_2(e){
 function deviceMotionUpdate(e){
     try{
 
-        //console.log("x: ", e.accelerationIncludingGravity.x);
-        //console.log("y: ", e.accelerationIncludingGravity.y);
-        //console.log("z: ", e.accelerationIncludingGravity.z);
+        var X = e.accelerationIncludingGravity.x;
+        var Y = e.accelerationIncludingGravity.y;
+        var Z = e.accelerationIncludingGravity.z;
 
-        Xposition.innerHTML = e.accelerationIncludingGravity.x;
-        Yposition.innerHTML = e.accelerationIncludingGravity.y;
-        Zposition.innerHTML = e.accelerationIncludingGravity.z;
+        Xposition.innerHTML = Math.round(X);
+        Yposition.innerHTML = Math.round(Y);
+        Zposition.innerHTML = Math.round(Z);
 
     }
     catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
