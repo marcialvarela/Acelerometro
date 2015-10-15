@@ -10,7 +10,7 @@
     <content src="index.html" />
     <preference name="permissions" value="none" />
 
-    <preference name="phonegap-version" value="3.5.0" />
+    <!--<preference name="phonegap-version" value="3.5.0" />-->
 
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -46,15 +46,15 @@
     <gap:plugin name="org.apache.cordova.vibration" />
 
 
-    <feature name="accelerometer">
+    <!--
+    <feature name="Accelerometer">
         <param name="ios-package" value="CDVAccelerometer" />
     </feature>
 
-    <!--
     <plugin name="Accelerometer" value="org.apache.cordova.AccelListener"/>
     -->
-    <feature name="accelerometer">
-        <param name="android-package" value="org.apache.cordova.AccelListener" />
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
     </feature>
 
     <icon src="icon.png" />
