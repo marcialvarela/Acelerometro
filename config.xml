@@ -57,7 +57,7 @@
     </feature>
     -->
     <feature name="Accelerometer">
-        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+        <param name="android-package" value="org.apache.cordova.AccelListener" />
     </feature>
 
     <icon src="icon.png" />
