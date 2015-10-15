@@ -72,7 +72,7 @@ function deviceMotionUpdate(e){
         Xposition_a.innerHTML = X_a;
         Yposition_a.innerHTML = Y_a;
         Zposition_a.innerHTML = Z_a;
-*/
+
         var rotation = e.rotationRate;
         var X_r = rotation.alpha.toFixed(2);
         var Y_r = rotation.beta.toFixed(2);
@@ -80,6 +80,7 @@ function deviceMotionUpdate(e){
         Xposition_r.innerHTML = X_r;
         Yposition_r.innerHTML = Y_r;
         Zposition_r.innerHTML = Z_r;
+ */
 
     }
     catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
