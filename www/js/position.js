@@ -59,14 +59,23 @@ function deviceMotionUpdate(e){
         var X = e.accelerationIncludingGravity.x.toFixed(2);
         var Y = e.accelerationIncludingGravity.y.toFixed(2);
         var Z = e.accelerationIncludingGravity.z.toFixed(2);
-
-        //Xposition.innerHTML = Math.round(X);
-        //Yposition.innerHTML = Math.round(Y);
-        //Zposition.innerHTML = Math.round(Z);
-
         Xposition.innerHTML = X;
         Yposition.innerHTML = Y;
         Zposition.innerHTML = Z;
+
+        var X_a = e.acceleration.x.toFixed(2);
+        var Y_a = e.acceleration.y.toFixed(2);
+        var Z_a = e.acceleration.z.toFixed(2);
+        Xposition_a.innerHTML = X_a;
+        Yposition_a.innerHTML = Y_a;
+        Zposition_a.innerHTML = Z_a;
+
+        var X_r = e.rotationRate.x.toFixed(2);
+        var Y_r = e.rotationRate.y.toFixed(2);
+        var Z_r = e.rotationRate.z.toFixed(2);
+        Xposition_r.innerHTML = X_r;
+        Yposition_r.innerHTML = Y_r;
+        Zposition_r.innerHTML = Z_r;
 
     }
     catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
