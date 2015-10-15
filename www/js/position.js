@@ -63,16 +63,18 @@ function deviceMotionUpdate(e){
         Yposition.innerHTML = Y;
         Zposition.innerHTML = Z;
 
-        var X_a = e.acceleration.x.toFixed(2);
-        var Y_a = e.acceleration.y.toFixed(2);
-        var Z_a = e.acceleration.z.toFixed(2);
+        var acceleration = e.acceleration;
+        var X_a = acceleration.x.toFixed(2);
+        var Y_a = acceleration.y.toFixed(2);
+        var Z_a = acceleration.z.toFixed(2);
         Xposition_a.innerHTML = X_a;
         Yposition_a.innerHTML = Y_a;
         Zposition_a.innerHTML = Z_a;
 
-        var X_r = e.rotationRate.x.toFixed(2);
-        var Y_r = e.rotationRate.y.toFixed(2);
-        var Z_r = e.rotationRate.z.toFixed(2);
+        var rotation = e.rotationRate;
+        var X_r = rotation.alpha.toFixed(2);
+        var Y_r = rotation.beta.toFixed(2);
+        var Z_r = rotation.gamma.toFixed(2);
         Xposition_r.innerHTML = X_r;
         Yposition_r.innerHTML = Y_r;
         Zposition_r.innerHTML = Z_r;
