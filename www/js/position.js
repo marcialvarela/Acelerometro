@@ -9,6 +9,11 @@
    orientation document:
  http://www.html5rocks.com/en/tutorials/device/orientation/?redirect_from_locale=es
 
+
+ TUTORIAL POR DIAPOSITIVAS: Brújula, Acelerómetro y Geolocalización con PhoneGap (Básico)
+
+    http://es.slideshare.net/JessFontecha/sensors-compass-accelerometer
+
  */
 
 function obtenerXYZ(){
@@ -86,3 +91,38 @@ function deviceMotionUpdate(e){
     catch (ex9){alert('Error deviceMotionUpdate: '+ex9.message);}
 
 }
+
+/* ****************************************************************************************** */
+/*          B R U J U L A
+/* ****************************************************************************************** */
+// The watch id references the current `watchHeading`
+var watchID = null;
+
+function brujula()
+{
+    alert('Entra en brujula()');
+    startWatch();
+    //navigator.compass.getCurrentHeading(compassSuccess, compassError, compassOptions);
+}
+function onSuccessCompass(heading) {
+    var element = document.getElementById('heading');
+    element.innerHTML = 'Heading: ' + heading.magneticHeading;};
+
+function onErrorCompass(error) {
+    alert('CompassError: ' + error.code);
+};
+
+function startWatch() {
+
+    // Update compass every 3 seconds
+    var options = { frequency: 3000 };
+
+    watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
+}
+function stopWatch() {
+    if (watchID) {
+        navigator.compass.clearWatch(watchID);
+        watchID = null;
+    }
+}
+
