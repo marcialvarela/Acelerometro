@@ -122,7 +122,8 @@ function startWatch() {
     try
     {
         var options = { frequency: 3000 };
-        watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
+        //watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
+        watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError, compassOptions);
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -135,3 +136,11 @@ function stopWatch() {
     }
 }
 
+
+function compassSuccess(heading) {
+    alert('Heading: ' + heading.magneticHeading);
+};
+
+function compassError(error) {
+    alert('CompassError: ' + error.code);
+};
