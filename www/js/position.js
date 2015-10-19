@@ -105,8 +105,12 @@ function brujula()
     //navigator.compass.getCurrentHeading(compassSuccess, compassError, compassOptions);
 }
 function onSuccessCompass(heading) {
-    var element = document.getElementById('heading');
-    element.innerHTML = 'Heading: ' + heading.magneticHeading;};
+    try {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+    catch (ex9) {alert('Error exception: ' + ex9.message);}
+}
 
 function onErrorCompass(error) {
     alert('CompassError: ' + error.code);
@@ -115,9 +119,14 @@ function onErrorCompass(error) {
 function startWatch() {
 
     // Update compass every 3 seconds
-    var options = { frequency: 3000 };
+    try
+    {
+        var options = { frequency: 3000 };
+        watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
 
-    watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+
 }
 function stopWatch() {
     if (watchID) {
