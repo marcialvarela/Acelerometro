@@ -121,9 +121,9 @@ function startWatch() {
     // Update compass every 3 seconds
     try
     {
-        //var compassOptions = { frequency: 3000 };
-        //watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, options);
-        watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
+        var compassOptions = { frequency: 3000 };
+        watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
+        //watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
