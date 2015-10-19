@@ -69,9 +69,11 @@
     <!--
         org.apache.cordova.device-orientation
         org.apache.cordova.deviceorientation.CompassListener
+        <param name="android-package" value="org.apache.cordova.device-orientation" />
+
     -->
     <feature name="Compass">
-        <param name="android-package" value="org.apache.cordova.device-orientation" />
+        <param name="android-package" value="org.apache.cordova.deviceorientation" />
     </feature>
 
 
