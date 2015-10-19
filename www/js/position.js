@@ -138,7 +138,10 @@ function stopWatch() {
 
 
 function compassSuccess(heading) {
-    alert('Heading: ' + heading.magneticHeading);
+    //alert('Heading: ' + heading.magneticHeading);
+    var element = document.getElementById('heading');
+    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+
 };
 
 function compassError(error) {
