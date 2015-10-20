@@ -141,7 +141,7 @@ function calculateDegrees(p_degrees){
     var iDegreeMinor = p_degrees - 22.5;
     var degree = '';
 
-    if(p_degrees <= 22.5 && p_degrees > 337.5){
+    if(p_degrees <= 22.5 && p_degrees > 0){
         degree = p_degrees+'º N';
     }
     if(p_degrees <= 67.5 && p_degrees > 22.5){
@@ -164,6 +164,9 @@ function calculateDegrees(p_degrees){
     }
     if(p_degrees <= 337.5 && p_degrees > 292.5){
         degree = p_degrees+'º NW';
+    }
+    if(p_degrees <= 360 && p_degrees > 337.5){
+        degree = p_degrees+'º N';
     }
 
     return degree;
@@ -193,6 +196,6 @@ function stopWatch() {
         navigator.compass.clearWatch(watchID);
         watchID = null;
         var element = document.getElementById('heading');
-        element.innerHTML = 'Waiting for heading...';
+        element.innerHTML = '...';
     }
 }
