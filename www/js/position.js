@@ -126,8 +126,8 @@ function startWatch() {
     try
     {
         var compassOptions = { frequency: 3000 };
-        //watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
-        watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
+        watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
+        //watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
 
     }
     catch (ex9){alert('Error startWatch: '+ex9.message);}
