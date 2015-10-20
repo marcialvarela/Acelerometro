@@ -127,14 +127,15 @@ function onSuccessCompass(heading) {
         element.innerHTML = calculateDegrees(degrees);
 
         var elemRose = document.getElementById('divCompassGraph');
-        elemRose.style.transform = "rotate("+degrees+"deg)";
+        var iDeg = degrees * (-1);
+        elemRose.style.transform = "rotate("+ iDeg +"deg)";
     }
     catch (ex9) {alert('Error exception: ' + ex9.message);}
 }
 
 function calculateDegrees(p_degrees){
 
-    p_degrees = p_degrees.toFixed(2);
+    p_degrees = p_degrees.toFixed(0);
 
     var iDegreePlus = p_degrees + 22.5;
     var iDegreeMinor = p_degrees - 22.5;
