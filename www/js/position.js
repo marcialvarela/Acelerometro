@@ -123,12 +123,51 @@ function onSuccessCompass(heading) {
     try {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
-        element.innerHTML = degrees + 'º';
-        var elemArrow = document.getElementById('arrow');
-        elemArrow.style.transform = "rotate("+degrees+"deg)";
+        //element.innerHTML = degrees + 'º';
+        element.innerHTML = calculateDegrees(degrees);
+
+        var elemRose = document.getElementById('divCompassGraph');
+        elemRose.style.transform = "rotate("+degrees+"deg)";
     }
     catch (ex9) {alert('Error exception: ' + ex9.message);}
 }
+
+function calculateDegrees(p_degrees){
+
+    var iDegreePlus = p_degrees + 22.5;
+    var iDegreeMinor = p_degrees - 22.5;
+    var degree = '';
+
+    if(p_degrees <= 22.5 && p_degrees > 337.5){
+        degree = p_degrees+'º N';
+    }
+    if(p_degrees <= 67.5 && p_degrees > 22.5){
+        degree = p_degrees+'º NE';
+    }
+    if(p_degrees <= 112.5 && p_degrees > 67.5){
+        degree = p_degrees+'º E';
+    }
+    if(p_degrees <= 157.5 && p_degrees > 112.5){
+        degree = p_degrees+'º SE';
+    }
+    if(p_degrees <= 202.5 && p_degrees > 157.5){
+        degree = p_degrees+'º S';
+    }
+    if(p_degrees <= 247.5 && p_degrees > 202.5){
+        degree = p_degrees+'º SW';
+    }
+    if(p_degrees <= 292.5 && p_degrees > 247.5){
+        degree = p_degrees+'º W';
+    }
+    if(p_degrees <= 337.5 && p_degrees > 292.5){
+        degree = p_degrees+'º NW';
+    }
+
+    return degree;
+
+
+}
+
 
 function onErrorCompass(error) {
     alert('CompassError: ' + error.code);
