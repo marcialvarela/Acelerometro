@@ -37,29 +37,19 @@
             <tr>
                 <td align="center">
                     <div id="divLine1" style="text-align: center;font-size: x-large;" >
-                        &nbsp;&nbsp;Acceleration <br/>
-                        &nbsp;&nbsp;X: <span id="Xposition_a" style="width: 300px">0</span></br>
-                        &nbsp;&nbsp;Y: <span id="Yposition_a" style="width: 300px">0</span></br>
-                        &nbsp;&nbsp;Z: <span id="Zposition_a" style="width: 300px">0</span></br>
-                        </br>
                         &nbsp;&nbsp;Acceleration including gravity <br/>
                         &nbsp;&nbsp;X: <span id="Xposition" style="width: 300px">0</span></br>
                         &nbsp;&nbsp;Y: <span id="Yposition" style="width: 300px">0</span></br>
                         &nbsp;&nbsp;Z: <span id="Zposition" style="width: 300px">0</span></br>
-                        </br>
-                        &nbsp;&nbsp;Rotation Rate <br/>
-                        &nbsp;&nbsp;X: <span id="Xposition_r" style="width: 300px">0</span></br>
-                        &nbsp;&nbsp;Y: <span id="Yposition_r" style="width: 300px">0</span></br>
-                        &nbsp;&nbsp;Z: <span id="Zposition_r" style="width: 300px">0</span></br>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td align="center">
                     <div id="divLine2" style="text-align: center;" >
-                        <button id="obtenerXYZ" onclick="obtenerXYZ();" style="font-size: x-large">Obtener Posicionamiento</button>
-                        <br/>
-                        <button id="obtenerXYZ_2" onclick="obtenerXYZ_Motion();" style="font-size: x-large">Obtener Posicionamiento Motion</button>
+                        <button id="obtenerXYZ_2" onclick="obtenerXYZ_Motion();" style="font-size: x-large">START POSITION</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button id="obtenerXYZ" onclick="obtenerXYZ_Motion_Stop();" style="font-size: x-large">STOP POSITION</button>
                     </div>
                 </td>
             </tr>
@@ -81,14 +71,16 @@
                 <td align="center">
                     <div id="divBrujula2" style="text-align: center;" >
                         <div id="divCompass">
-                            <div id="divCompassGraph">
-                                <img src="img/rose.png" width="500px" height="500px">
-                                <div id="arrow" style="position: relative;top:-360px;left:7px" >
+                            <div id="divCompassGraph" style="position: relative;top:0px;left:0px">
+                                <img src="img/rose.png" width="390px" height="390px">
+                                <div id="arrow" style="position: relative;top:-295px;left:0px" >
                                     <img src="img/arrow.png" width="200px" height="200px">
                                 </div>
+                                <div id="arrowButtons" style="position: relative;top:-150px;left:0px" >
+                                    <button onclick="startWatch();" style="font-size: x-large">START COMPASS</button>
+                                    <button onclick="stopWatch();" style="font-size: x-large">STOP COMPASS</button>
+                                </div>
                             </div>
-                            <button onclick="startWatch();" style="font-size: x-large">Start Watching</button>
-                            <button onclick="stopWatch();" style="font-size: x-large">Stop Watching</button>
                         </div>
                     </div>
                 </td>

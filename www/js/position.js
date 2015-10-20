@@ -52,14 +52,25 @@ function onError() {
 }
 
 
+function obtenerXYZ_Motion_Stop(e) {
+    try
+    {
+        Xposition.innerHTML = '0.00';
+        Yposition.innerHTML = '0.00';
+        Zposition.innerHTML = '0.00';
+
+        window.removeEventListener("devicemotion", deviceMotionUpdate, true);
+    }
+    catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
+}
+
 function obtenerXYZ_Motion(e){
 
-    var sensorAcc = null;
     try
     {
         window.addEventListener("devicemotion", deviceMotionUpdate, true);
     }
-    catch (ex9){alert('Error exception: '+ex9.message);}
+    catch (ex9){alert('Error obtenerXYZ_Motion: '+ex9.message);}
 }
 
 function deviceMotionUpdate(e){
