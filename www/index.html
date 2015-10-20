@@ -80,9 +80,16 @@
             <tr>
                 <td align="center">
                     <div id="divBrujula2" style="text-align: center;" >
-                        <div id="arrow"><img src="img/arrow.png" width="200px" height="200px"></div>
-                        <button onclick="startWatch();" style="font-size: x-large">Start Watching</button>
-                        <button onclick="stopWatch();" style="font-size: x-large">Stop Watching</button>
+                        <div id="divCompass">
+                            <div id="divCompassGraph">
+                                <img src="img/rose.png" width="500px" height="500px">
+                                <div id="arrow" style="position: relative;top:-360px;left:7px" >
+                                    <img src="img/arrow.png" width="200px" height="200px">
+                                </div>
+                            </div>
+                            <button onclick="startWatch();" style="font-size: x-large">Start Watching</button>
+                            <button onclick="stopWatch();" style="font-size: x-large">Stop Watching</button>
+                        </div>
                     </div>
                 </td>
             </tr>

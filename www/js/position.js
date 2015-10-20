@@ -112,9 +112,7 @@ function onSuccessCompass(heading) {
     try {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
-        element.innerHTML = 'Heading: ' + degrees;
-        //element.innerHTML = 'Heading: ' + heading.magneticHeading;
-        //arrow.css('-webkit-transform','rotate('+ element.innerHTML +'deg)');
+        element.innerHTML = degrees + 'º';
         var elemArrow = document.getElementById('arrow');
         elemArrow.style.transform = "rotate("+degrees+"deg)";
     }
@@ -132,7 +130,6 @@ function startWatch() {
     {
         var compassOptions = { frequency: 300 };
         watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
-        //watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
 
     }
     catch (ex9){alert('Error startWatch: '+ex9.message);}
@@ -144,15 +141,3 @@ function stopWatch() {
         watchID = null;
     }
 }
-
-
-function compassSuccess(heading) {
-    //alert('Heading: ' + heading.magneticHeading);
-    var element = document.getElementById('heading');
-    element.innerHTML = 'Heading: ' + heading.magneticHeading;
-
-};
-
-function compassError(error) {
-    alert('CompassError: ' + error.code);
-};
