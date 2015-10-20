@@ -111,8 +111,12 @@ function brujula()
 function onSuccessCompass(heading) {
     try {
         var element = document.getElementById('heading');
-        element.innerHTML = 'Heading: ' + heading.magneticHeading;
-        arrow.css('-webkit-transform','rotate('+ element.innerHTML +'deg)');
+        var degrees = heading.magneticHeading;
+        element.innerHTML = 'Heading: ' + degrees;
+        //element.innerHTML = 'Heading: ' + heading.magneticHeading;
+        //arrow.css('-webkit-transform','rotate('+ element.innerHTML +'deg)');
+        var elemArrow = document.getElementById('arrow');
+        elemArrow.style.transform = "rotate("+degrees+"deg)";
     }
     catch (ex9) {alert('Error exception: ' + ex9.message);}
 }
