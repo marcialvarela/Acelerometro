@@ -16,6 +16,10 @@
 
  */
 
+/* ****************************************************************************************** */
+/*          P O S I C I O N A M I E N T O    -    A C E L E R O M E T R O
+ /* ****************************************************************************************** */
+
 function obtenerXYZ(){
 
     var sensorAcc = null;
@@ -93,7 +97,7 @@ function deviceMotionUpdate(e){
 }
 
 /* ****************************************************************************************** */
-/*          B R U J U L A
+/*          B R U J U L A    - M A G N E T R O N O M O
 /* ****************************************************************************************** */
 // The watch id references the current `watchHeading`
 var watchID = null;
@@ -122,11 +126,11 @@ function startWatch() {
     try
     {
         var compassOptions = { frequency: 3000 };
-        watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
-        //watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
+        //watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
+        watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
 
     }
-    catch (ex9){alert('Error exception: '+ex9.message);}
+    catch (ex9){alert('Error startWatch: '+ex9.message);}
 
 }
 function stopWatch() {

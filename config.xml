@@ -73,9 +73,8 @@
 
     -->
     <feature name="Compass">
-        <param name="android-package" value="org.apache.cordova.deviceorientation" />
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
     </feature>
-
 
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
