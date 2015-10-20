@@ -134,6 +134,8 @@ function onSuccessCompass(heading) {
 
 function calculateDegrees(p_degrees){
 
+    p_degrees = p_degrees.toFixed(2);
+
     var iDegreePlus = p_degrees + 22.5;
     var iDegreeMinor = p_degrees - 22.5;
     var degree = '';
@@ -189,5 +191,7 @@ function stopWatch() {
     if (watchID) {
         navigator.compass.clearWatch(watchID);
         watchID = null;
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Waiting for heading...';
     }
 }
