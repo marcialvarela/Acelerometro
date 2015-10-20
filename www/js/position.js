@@ -141,7 +141,7 @@ function calculateDegrees(p_degrees){
     var iDegreeMinor = p_degrees - 22.5;
     var degree = '';
 
-    if(p_degrees <= 22.5 && p_degrees > 0){
+    if(p_degrees <= 22.5 && p_degrees >= 0){
         degree = p_degrees+'º N';
     }
     if(p_degrees <= 67.5 && p_degrees > 22.5){
