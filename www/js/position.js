@@ -112,6 +112,7 @@ function onSuccessCompass(heading) {
     try {
         var element = document.getElementById('heading');
         element.innerHTML = 'Heading: ' + heading.magneticHeading;
+        arrow.css('-webkit-transform','rotate('+ element.innerHTML +'deg)');
     }
     catch (ex9) {alert('Error exception: ' + ex9.message);}
 }
@@ -125,7 +126,7 @@ function startWatch() {
     // Update compass every 3 seconds
     try
     {
-        var compassOptions = { frequency: 3000 };
+        var compassOptions = { frequency: 300 };
         watchID = navigator.compass.watchHeading(onSuccessCompass, onErrorCompass, compassOptions);
         //watchID = navigator.compass.getCurrentHeading(compassSuccess, compassError);
 
