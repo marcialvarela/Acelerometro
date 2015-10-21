@@ -34,6 +34,7 @@ function verMenu(option){
             document.getElementById('divMapCanvas').style.visibility='hidden';
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
+            document.getElementById('divMapLabel').style.visibility='hidden';
         }
         else if (option==1){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -41,6 +42,7 @@ function verMenu(option){
             document.getElementById('divMapCanvas').style.visibility='hidden';
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
+            document.getElementById('divMapLabel').style.visibility='hidden';
         }
         else if (option==2){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -48,6 +50,7 @@ function verMenu(option){
             document.getElementById('divMapCanvas').style.visibility='visible';
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
+            document.getElementById('divMapLabel').style.visibility='visible';
             initCanvas();
         }
         else{
@@ -56,6 +59,7 @@ function verMenu(option){
             document.getElementById('divMapCanvas').style.visibility='hidden';
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
+            document.getElementById('divMapLabel').style.visibility='hidden';
         }
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -257,8 +261,6 @@ function stopWatch() {
 /* ****************************************************************************************** */
 /*          M A P
  /* ****************************************************************************************** */
-var player=new Rectangle(100,260,10,10);
-var btnPause=new Button(90,0,20,20);
 var time=0;
 
 var canvas=null,ctx=null;
@@ -274,6 +276,8 @@ var lastPress=null;
 var pause=false;
 var motionSupport=false;
 var accelerationX=0;
+var accelerationY=0;
+var accelerationZ=0;
 var time=0;
 
 
@@ -315,11 +319,13 @@ function enableInputs(){
             motionSupport=true;
             window.addEventListener('devicemotion',function(evt){
                 accelerationX=evt.accelerationIncludingGravity.x;
+                accelerationY=evt.accelerationIncludingGravity.y;
+                accelerationZ=evt.accelerationIncludingGravity.z;
                 //MVL
-                XpositionLabel.innerHTML = "X: " + accelerationX.toFixed(2);
+                XpositionLabel.innerHTML = accelerationX.toFixed(2);
+                YpositionLabel.innerHTML = accelerationY.toFixed(2);
+                ZpositionLabel.innerHTML = accelerationZ.toFixed(2);
 
-                //accelerationY=evt.accelerationIncludingGravity.y;
-                //accelerationZ=evt.accelerationIncludingGravity.z;
             },false);
         }
     }
@@ -487,23 +493,8 @@ function run(){
     time=now;
 
     act();
-    //paint(ctx);
 }
 
-function paint(ctx){
-    ctx.fillStyle='#000';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle='#0f0';
-    player.fill(ctx);
-
-    if(pause){
-        ctx.textAlign='center';
-        ctx.fillText('PAUSE',95,150);
-        ctx.textAlign='left';
-    }
-    ctx.strokeStyle='#fff';
-    btnPause.stroke(ctx);
-}
 
 
 function act(deltaTime){
@@ -512,32 +503,21 @@ function act(deltaTime){
 
         // Move Rect RIGHT
         if(accelerationX>2){
-            //player.x+=120*deltaTime;
             ctxPoint.x+=120*deltaTime;
-
         }
 
         // Move Rect LEFT
         if(accelerationX<-2){
-            //player.x-=120*deltaTime;
             ctxPoint.x-=120*deltaTime;
         }
 
         // Out Screen
-        if(player.x>canvas.width-player.width)
-        {
-            //player.x=canvas.width-player.width;
+        if(ctxPoint.x>canvas.width-ctxPoint.width){
             ctxPoint.x=canvas.width-ctxPoint.width;
         }
-        if(player.x<0){
-            //player.x=0;
-            ctxPoint.x=0;
 
+        if(ctxPoint.x<0){
+            ctxPoint.x=0;
         }
-    }
-    // Pause/Unpause
-    if(lastPress==1&&btnPause.touch()){
-        pause=!pause;
-        lastPress=null;
     }
 }

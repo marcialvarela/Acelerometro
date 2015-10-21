@@ -36,9 +36,9 @@
             <tr>
                 <td align="center">
                     <div id="divMenu" style="text-align: center; font-size: x-large; background-color: #7e7e7e;height: 50px;" >
-                        <button id="btnPositon" onclick="verMenu(0);" style="font-size: xx-large">VIEW MOTION</button>
+                        <button id="btnPositon" onclick="verMenu(0);" style="font-size: xx-large">MOTION</button>
                         &nbsp;
-                        <button id="btnCompass" onclick="verMenu(1);" style="font-size: xx-large">VIEW COMPASS</button>
+                        <button id="btnCompass" onclick="verMenu(1);" style="font-size: xx-large">COMPASS</button>
                         &nbsp;
                         <button id="btnMap" onclick="verMenu(2);" style="font-size: xx-large">MAP</button>
                     </div>
@@ -78,11 +78,11 @@
                             <tr>
                                 <td align="center">
                                     <div id="divLine2" style="text-align: center;" >
-                                        <button id="obtenerXYZ_2" onclick="obtenerXYZ_Motion();" style="font-size: xx-large">START POSITION</button>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <button id="obtenerXYZ" onclick="obtenerXYZ_Motion_Stop();" style="font-size: xx-large">STOP POSITION</button>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <button id="FixedXYZ" onclick="fixedXYZ_Motion();" style="font-size: xx-large">FIXED POSITION</button>
+                                        <button id="obtenerXYZ_2" onclick="obtenerXYZ_Motion();" style="font-size: xx-large">START</button>
+                                        &nbsp;
+                                        <button id="obtenerXYZ" onclick="obtenerXYZ_Motion_Stop();" style="font-size: xx-large">STOP</button>
+                                        &nbsp;
+                                        <button id="FixedXYZ" onclick="fixedXYZ_Motion();" style="font-size: xx-large">FIXED</button>
                                     </div>
                                 </td>
                             </tr>
@@ -104,10 +104,9 @@
                                                 <div id="divCompassGraph" style="position: relative;top:-295px;left:0px" >
                                                     <img src="img/rose.png" width="390px" height="390px">
                                                 </div>
-                                                <div id="arrowButtons" style="position: relative;top:-150px;left:0px" >
+                                                <div id="arrowButtons" style="position: relative;top:-250px;left:0px" >
                                                     <div id="heading" style="text-align: center;font-size: xx-large;">...</div>
-                                                    <br/>
-                                                    <br/>
+                                                    <br/><br/>
                                                     <button onclick="startWatch();" style="font-size: xx-large">START COMPASS</button>
                                                     <button onclick="stopWatch();" style="font-size: xx-large">STOP COMPASS</button>
                                                 </div>
@@ -123,8 +122,10 @@
                     <!-- ----------------------- M A P ----------------------- -->
                     <!-- ----------------------------------------------------- -->
 
-                    <div id="divMapLabel" style="visibility: visible; z-index: 1;position: fixed;top:50px;left:0px;font-size: xx-large" >
-                        X: <span id="XpositionLabel" style="width: 300px">0</span></br>
+                    <div id="divMapLabel" style="visibility: hidden; z-index: 1;position: fixed;top:50px;left:0px;font-size: xx-large" >
+                        X: <span id="XpositionLabel" style="width: 300px">0</span><br/>
+                        Y: <span id="YpositionLabel" style="width: 300px">0</span><br/>
+                        Z: <span id="ZpositionLabel" style="width: 300px">0</span>
                     </div>
                     <div id="divMapFixed" style="visibility: hidden; z-index: 1;position: fixed;top:0px;left:0px" >
                         <img id="mapFixed" src="img/mapa1.png" width="478px" height="612px;" style="z-index: 99">
