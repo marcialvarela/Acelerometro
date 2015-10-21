@@ -20,6 +20,47 @@
 /*          P O S I C I O N A M I E N T O    -    A C E L E R O M E T R O
  /* ****************************************************************************************** */
 
+Xposition.innerHTML = '0.00';
+Yposition.innerHTML = '0.00';
+Zposition.innerHTML = '0.00';
+
+function verMenu(option){
+
+    try
+    {
+        if (option==0){
+            document.getElementById('divAceletarion').style.visibility='visible';
+            document.getElementById('divBrujula').style.visibility='hidden';
+            document.getElementById('divMapCanvas').style.visibility='hidden';
+            document.getElementById('divMapFixed').style.visibility='hidden';
+            document.getElementById('divPoint').style.visibility='hidden';
+        }
+        else if (option==1){
+            document.getElementById('divAceletarion').style.visibility='hidden';
+            document.getElementById('divBrujula').style.visibility='visible';
+            document.getElementById('divMapCanvas').style.visibility='hidden';
+            document.getElementById('divMapFixed').style.visibility='hidden';
+            document.getElementById('divPoint').style.visibility='hidden';
+        }
+        else if (option==2){
+            document.getElementById('divAceletarion').style.visibility='hidden';
+            document.getElementById('divBrujula').style.visibility='hidden';
+            document.getElementById('divMapCanvas').style.visibility='visible';
+            document.getElementById('divMapFixed').style.visibility='hidden';
+            document.getElementById('divPoint').style.visibility='hidden';
+            initCanvas();
+        }
+        else{
+            document.getElementById('divAceletarion').style.visibility='hidden';
+            document.getElementById('divBrujula').style.visibility='hidden';
+            document.getElementById('divMapCanvas').style.visibility='hidden';
+            document.getElementById('divMapFixed').style.visibility='hidden';
+            document.getElementById('divPoint').style.visibility='hidden';
+        }
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
 function obtenerXYZ(){
 
     var sensorAcc = null;
@@ -51,6 +92,18 @@ function onError() {
     alert('onError!');
 }
 
+function fixedXYZ_Motion(){
+
+    try
+    {
+        XpositionF.innerHTML = document.getElementById('Xposition').innerHTML;
+        YpositionF.innerHTML = document.getElementById('Yposition').innerHTML;
+        ZpositionF.innerHTML = document.getElementById('Zposition').innerHTML;
+
+    }
+    catch (ex9){alert('Error fixedXYZ_Motion: '+ex9.message);}
+
+}
 
 function obtenerXYZ_Motion_Stop(e) {
     try
@@ -197,5 +250,294 @@ function stopWatch() {
         watchID = null;
         var element = document.getElementById('heading');
         element.innerHTML = '...';
+    }
+}
+
+
+/* ****************************************************************************************** */
+/*          M A P
+ /* ****************************************************************************************** */
+var player=new Rectangle(100,260,10,10);
+var btnPause=new Button(90,0,20,20);
+var time=0;
+
+var canvas=null,ctx=null;
+var ctxPoint=null;
+var scaleX=1,scaleY=1;
+
+var PointX_a=0, PointY_a=0;
+var PointX=0, PointY=0;
+var unitFoot = 20;
+
+var touches=[];
+var lastPress=null;
+var pause=false;
+var motionSupport=false;
+var accelerationX=0;
+var time=0;
+
+
+function initCanvas(){
+    try{
+        canvas=document.getElementById('myCanvas');
+        ctx=canvas.getContext('2d');
+        ctxPoint=canvas.getContext('2d');
+        canvas.width=200;
+        canvas.height=300;
+
+        enableInputs();
+        resize();
+        InitPositionMap();
+        InitPositionPoint();
+        paintPoint();
+
+        //run();
+
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function paintPoint(){
+
+    /* PINTA EL CIRCULO AMARILLO */
+    var radius = 10;
+    ctxPoint.beginPath();
+    ctxPoint.arc(PointX, PointY, radius, 0, Math.PI * 2, false);
+    ctxPoint.closePath();
+    ctxPoint.fillStyle = "#FFFF00";
+    ctxPoint.fill();
+
+}
+
+function enableInputs(){
+    try{
+        if(window.DeviceOrientationEvent){
+            motionSupport=true;
+            window.addEventListener('devicemotion',function(evt){
+                accelerationX=evt.accelerationIncludingGravity.x;
+                //MVL
+                XpositionLabel.innerHTML = "X: " + accelerationX.toFixed(2);
+
+                //accelerationY=evt.accelerationIncludingGravity.y;
+                //accelerationZ=evt.accelerationIncludingGravity.z;
+            },false);
+        }
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function InitPositionMap(){
+
+    var elemMap = document.getElementById('mapFixed');
+    var divElemMap = document.getElementById('divMapFixed');
+
+    try{
+
+        var x = 0;
+        var y = 0;
+
+        x = (canvas.width/2) - (elemMap.width/2);
+        y = (canvas.height/2) - (elemMap.height/2);
+
+        divElemMap.style.top = y+'px';
+        divElemMap.style.left = x+'px';
+
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+
+}
+
+function InitPositionPoint(){
+
+    var elemPoint = document.getElementById('divPoint');
+    var elemPointPosition = document.getElementById('divPosition');
+
+    try{
+
+        var x = 0;
+        var y = 0;
+
+        x = (canvas.width/2) - (elemPointPosition.width/2);
+        y = (canvas.height/2) - (elemPointPosition.height/2) + 50;
+
+        elemPoint.style.top = y+'px';
+        elemPoint.style.left = x+'px';
+
+        PointX_a=canvas.width/2;
+        PointY_a=canvas.height/2;
+
+        PointX=PointX_a;
+        PointY=PointY_a;
+
+        document.getElementById("divPoint").style.zIndex = "99";
+        document.getElementById("divMapCanvas").style.zIndex = "2";
+        document.getElementById("divMapFixed").style.zIndex = "1";
+
+        document.getElementById('divPoint').style.visibility='hidden';
+        document.getElementById('divMapCanvas').style.visibility='visible';
+        document.getElementById('divMapFixed').style.visibility='visible';
+
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+
+}
+
+function resize(){
+
+    try{
+        /*
+        //Fijar al ancho y alto de la pantalla
+        canvas.style.position='fixed';
+        canvas.style.top='50px';
+        canvas.style.left='0';
+        canvas.style.width='100%';
+        canvas.style.height='100%';
+        scaleX=canvas.width/window.innerWidth;
+        scaleY=canvas.height/window.innerHeight;
+         */
+        canvas.style.position='fixed';
+        canvas.style.top='50px';
+        canvas.style.left='0';
+        canvas.width = screen.width;
+        canvas.height = screen.height - 50;
+
+
+        /* diagonal que muestra el centro del canvas         */
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.moveTo(canvas.width, 0);
+        ctx.lineTo(0, canvas.height);
+        ctx.stroke();
+
+    }
+    catch (ex9){alert('Error resize: '+ex9.message);}
+}
+
+Rectangle.prototype.fill=function(ctx){
+    ctx.fillRect(this.x,this.y,this.width,this.height);
+}
+
+function runLine_example(){
+
+    paintLine(PointX, PointY, PointX, PointY-unitFoot);
+    paintLine(PointX, PointY, PointX-unitFoot, PointY);
+    paintLine(PointX, PointY, PointX-unitFoot, PointY);
+    paintLine(PointX, PointY, PointX-unitFoot, PointY);
+    paintLine(PointX, PointY, PointX, PointY-unitFoot);
+
+    movePositionPoint(PointX, PointY);
+
+}
+
+function movePositionPoint(x, y){
+
+    var x_1 = 0;
+    var y_1 = 0;
+
+    var elemPoint = document.getElementById('divPoint');
+    var elemPointPosition = document.getElementById('divPosition');
+
+    try
+    {
+        x_1 = x - (elemPointPosition.width/2);
+        y_1 = y - (elemPointPosition.height/2) + 50;
+
+        elemPoint.style.top = y_1+'px';
+        elemPoint.style.left = x_1+'px';
+
+        PointX_a=canvas.width/2;
+        PointY_a=canvas.height/2;
+
+        ctxPoint.x=PointX_a;
+        ctxPoint.y=PointY_a;
+
+    }
+    catch (ex9){alert('Error paintLine: '+ex9.message);}
+
+}
+
+function paintLine(x_a, y_a, x, y){
+
+    try{
+
+        //Dibujar linea
+        ctx.beginPath();
+        ctx.moveTo(x_a, y_a);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+        PointX = x;
+        PointY = y;
+
+    }
+    catch (ex9){alert('Error paintLine: '+ex9.message);}
+
+}
+
+
+function run(){
+    requestAnimationFrame(run);
+
+    var now=Date.now();
+    var deltaTime=(now-time)/1000;
+    if(deltaTime>1){
+        deltaTime=0;
+    }
+    time=now;
+
+    act();
+    //paint(ctx);
+}
+
+function paint(ctx){
+    ctx.fillStyle='#000';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#0f0';
+    player.fill(ctx);
+
+    if(pause){
+        ctx.textAlign='center';
+        ctx.fillText('PAUSE',95,150);
+        ctx.textAlign='left';
+    }
+    ctx.strokeStyle='#fff';
+    btnPause.stroke(ctx);
+}
+
+
+function act(deltaTime){
+
+    if(!pause){
+
+        // Move Rect RIGHT
+        if(accelerationX>2){
+            //player.x+=120*deltaTime;
+            ctxPoint.x+=120*deltaTime;
+
+        }
+
+        // Move Rect LEFT
+        if(accelerationX<-2){
+            //player.x-=120*deltaTime;
+            ctxPoint.x-=120*deltaTime;
+        }
+
+        // Out Screen
+        if(player.x>canvas.width-player.width)
+        {
+            //player.x=canvas.width-player.width;
+            ctxPoint.x=canvas.width-ctxPoint.width;
+        }
+        if(player.x<0){
+            //player.x=0;
+            ctxPoint.x=0;
+
+        }
+    }
+    // Pause/Unpause
+    if(lastPress==1&&btnPause.touch()){
+        pause=!pause;
+        lastPress=null;
     }
 }
