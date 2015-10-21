@@ -313,6 +313,18 @@ function paintPoint(){
 
 }
 
+function refreshPoint(x, y){
+
+    /* PINTA EL CIRCULO AMARILLO */
+    var radius = 10;
+    ctxPoint.beginPath();
+    ctxPoint.arc(x, y, radius, 0, Math.PI * 2, false);
+    ctxPoint.closePath();
+    ctxPoint.fillStyle = "#FFFF00";
+    ctxPoint.fill();
+
+}
+
 function enableInputs(){
     try{
         if(window.DeviceOrientationEvent){
@@ -503,21 +515,25 @@ function act(deltaTime){
 
         // Move Rect RIGHT
         if(accelerationX>2){
-            ctxPoint.x+=120*deltaTime;
+            //ctxPoint.x+=120*deltaTime;
+            PointX+=120*deltaTime;
         }
 
         // Move Rect LEFT
         if(accelerationX<-2){
-            ctxPoint.x-=120*deltaTime;
+            //ctxPoint.x-=120*deltaTime;
+            PointX-=120*deltaTime;
         }
 
         // Out Screen
         if(ctxPoint.x>canvas.width-ctxPoint.width){
-            ctxPoint.x=canvas.width-ctxPoint.width;
+            PointX=canvas.width-ctxPoint.width;
         }
 
         if(ctxPoint.x<0){
-            ctxPoint.x=0;
+            PointX==0;
         }
+
+        refreshPoint(PointX, PointY);
     }
 }
