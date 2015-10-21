@@ -295,7 +295,7 @@ function initCanvas(){
         InitPositionPoint();
         paintPoint();
 
-        //run();
+        run();
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
