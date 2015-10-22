@@ -197,7 +197,7 @@ function deviceMotionUpdate(e){
         XpositionM.innerHTML = X;
         YpositionM.innerHTML = Y;
         ZpositionM.innerHTML = Z;
-        ZpositionT.innerHTML = T;
+        TpositionM.innerHTML = T;
 
 
 /*
