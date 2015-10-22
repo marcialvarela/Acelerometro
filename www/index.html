@@ -35,12 +35,14 @@
         <table style="width:100%; " align="center">
             <tr>
                 <td align="center">
+                    <!-- ------------------------------------------------------------------------- -->
+                    <!-- ----------------------- M E N U    B U T T O N S  ----------------------- -->
+                    <!-- ------------------------------------------------------------------------- -->
                     <div id="divMenu" style="text-align: center; font-size: x-large; background-color: #7e7e7e;height: 50px;" >
                         <button id="btnPositon" onclick="verMenu(0);" style="font-size: xx-large">MOTION</button>
-                        &nbsp;
                         <button id="btnCompass" onclick="verMenu(1);" style="font-size: xx-large">COMPASS</button>
-                        &nbsp;
                         <button id="btnMap" onclick="verMenu(2);" style="font-size: xx-large">MAP</button>
+                        <button id="btnGeo" onclick="verMenu(3);" style="font-size: xx-large">FOOT</button>
                     </div>
                 </td>
             </tr>
@@ -50,7 +52,7 @@
                     <!-- ------------------------------------------------------------------------- -->
                     <!-- ----------------------- A C E L E R O M E T R O   ----------------------- -->
                     <!-- ------------------------------------------------------------------------- -->
-                    <div id="divAceletarion" style="text-align: center;font-size: x-large;visibility: hidden" >
+                    <div id="divAceletarion" style="text-align: center;font-size: x-large;visibility: hidden; font-family: monospace;" >
                         <table style="width:100%; " align="center">
                             <tr>
                                 <td align="center">
@@ -65,11 +67,12 @@
                                                 &nbsp;&nbsp;X: <span id="Xposition" style="width: 300px">0</span></br>
                                                 &nbsp;&nbsp;Y: <span id="Yposition" style="width: 300px">0</span></br>
                                                 &nbsp;&nbsp;Z: <span id="Zposition" style="width: 300px">0</span></br>
+                                                &nbsp;&nbsp;T: <span id="Tposition" style="width: 300px">0</span></br>
                                             </td>
                                             <td style="width:50%;" align="center">
                                                 &nbsp;&nbsp;Fix.X: <span id="XpositionF" style="width: 300px">0</span></br>
                                                 &nbsp;&nbsp;Fix.Y: <span id="YpositionF" style="width: 300px">0</span></br>
-                                                &nbsp;&nbsp;Fix.Z: <span id="ZpositionF" style="width: 300px">0</span></br>
+                                                &nbsp;&nbsp;Stamp: <span id="TpositionF" style="width: 300px">0</span></br>
                                             </td>
                                         </tr>
                                     </table>
@@ -135,7 +138,17 @@
                         <canvas id="myCanvas" style="background: transparent;"></canvas>
                     </div>
                     <div id="divPoint" style="visibility: hidden; z-index: 99;position: fixed;top:0px;left:0px" >
-                        <img id="divPosition" src="img/point.png" width="20px" height="20px;" style="z-index: 99">
+                        <img id="divPosition" src="img/arrow.png" width="30px" height="30px" style="z-index: 99;">
+                    </div>
+
+                    <!-- ----------------------------------------------------- -->
+                    <!-- ----------------------- M A P ----------------------- -->
+                    <!-- ----------------------------------------------------- -->
+
+                    <div id="divPodometer" style="visibility: hidden; z-index: 1;position: fixed;top:50px;left:0px;font-size: xx-large" >
+                        X: <span id="XpositionGEO" style="width: 300px">0</span><br/>
+                        Y: <span id="YpositionGEO" style="width: 300px">0</span><br/>
+                        Z: <span id="ZpositionGEO" style="width: 300px">0</span>
                     </div>
                 </td>
             </tr>

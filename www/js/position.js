@@ -17,12 +17,24 @@
  */
 
 /* ****************************************************************************************** */
+/*          R E Q U E S T   A N I M A T I O N
+ /* ****************************************************************************************** */
+window.requestAnimationFrame=(function(){
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function(callback){window.setTimeout(callback,17);};
+})();
+
+
+/* ****************************************************************************************** */
 /*          P O S I C I O N A M I E N T O    -    A C E L E R O M E T R O
  /* ****************************************************************************************** */
 
 Xposition.innerHTML = '0.00';
 Yposition.innerHTML = '0.00';
 Zposition.innerHTML = '0.00';
+Tposition.innerHTML = '0.00';
 
 function verMenu(option){
 
@@ -35,6 +47,7 @@ function verMenu(option){
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
+            document.getElementById('divPodometer').style.visibility='hidden';
         }
         else if (option==1){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -43,6 +56,7 @@ function verMenu(option){
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
+            document.getElementById('divPodometer').style.visibility='hidden';
         }
         else if (option==2){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -51,6 +65,17 @@ function verMenu(option){
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='visible';
+            document.getElementById('divPodometer').style.visibility='hidden';
+            initCanvas();
+        }
+        else if (option==3){
+            document.getElementById('divAceletarion').style.visibility='hidden';
+            document.getElementById('divBrujula').style.visibility='hidden';
+            document.getElementById('divMapCanvas').style.visibility='visible';
+            document.getElementById('divMapFixed').style.visibility='hidden';
+            document.getElementById('divPoint').style.visibility='visible';
+            document.getElementById('divMapLabel').style.visibility='hidden';
+            document.getElementById('divPodometer').style.visibility='visible';
             initCanvas();
         }
         else{
@@ -60,6 +85,7 @@ function verMenu(option){
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
+            document.getElementById('divPodometer').style.visibility='hidden';
         }
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -86,6 +112,7 @@ function onSuccess(acceleration) {
         Xposition.innerHTML = acceleration.x;
         Yposition.innerHTML = acceleration.y;
         Zposition.innerHTML = acceleration.z;
+        Tposition.innerHTML = acceleration.timestamp ;
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -265,6 +292,7 @@ var time=0;
 
 var canvas=null,ctx=null;
 var ctxPoint=null;
+var ctxPointT=null;
 var scaleX=1,scaleY=1;
 
 var PointX_a=0, PointY_a=0;
@@ -286,6 +314,7 @@ function initCanvas(){
         canvas=document.getElementById('myCanvas');
         ctx=canvas.getContext('2d');
         ctxPoint=canvas.getContext('2d');
+        ctxPointT=canvas.getContext('2d');
         canvas.width=200;
         canvas.height=300;
 
@@ -293,12 +322,24 @@ function initCanvas(){
         resize();
         InitPositionMap();
         InitPositionPoint();
-        paintPoint();
+        //paintPoint();
+        //paintPointT();
 
-        run();
+        //run();
+        startWatchMap();
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function paintPointT(){
+
+    ctxPointT.beginPath();
+    ctxPointT.moveTo(PointX, PointY-10);
+    ctxPointT.lineTo(PointX-10,PointY+10);
+    ctxPointT.lineTo(PointX+10,PointY+10);
+    ctxPointT.fillStyle = "#E55100";
+    ctxPointT.fill();
 }
 
 function paintPoint(){
@@ -391,14 +432,56 @@ function InitPositionPoint(){
         document.getElementById("divMapCanvas").style.zIndex = "2";
         document.getElementById("divMapFixed").style.zIndex = "1";
 
-        document.getElementById('divPoint').style.visibility='hidden';
+        document.getElementById('divPoint').style.visibility='visible';
         document.getElementById('divMapCanvas').style.visibility='visible';
         document.getElementById('divMapFixed').style.visibility='visible';
+
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 
 }
+
+
+function startWatchMap() {
+
+    // Update compass every 3 seconds
+    try
+    {
+        var compassOptionsMap = { frequency: 300 };
+        watchID = navigator.compass.watchHeading(onSuccessCompassMap, onErrorCompassMap, compassOptionsMap);
+
+    }
+    catch (ex9){alert('Error startWatchMap: '+ex9.message);}
+}
+
+function stopWatchMap() {
+    if (watchID) {
+        navigator.compass.clearWatch(watchID);
+        watchID = null;
+        //var element = document.getElementById('heading');
+        //element.innerHTML = '...';
+    }
+}
+
+function onSuccessCompassMap(heading) {
+    try {
+        var element = document.getElementById('heading');
+        var degrees = heading.magneticHeading;
+
+        //element.innerHTML = calculateDegrees(degrees);
+
+        var elemPoint = document.getElementById('divPoint');
+        var iDeg = degrees * (-1);
+        elemPoint.style.transform = "rotate("+ iDeg +"deg)";
+    }
+    catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
+}
+
+function onErrorCompassMap(error) {
+    alert('CompassError: ' + error.code);
+};
+
 
 function resize(){
 
@@ -420,13 +503,14 @@ function resize(){
         canvas.height = screen.height - 50;
 
 
-        /* diagonal que muestra el centro del canvas         */
-        ctx.beginPath();
+        /* pinta la Diagonal que muestra el centro del canvas         */
+        /*ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(canvas.width, canvas.height);
         ctx.moveTo(canvas.width, 0);
         ctx.lineTo(0, canvas.height);
         ctx.stroke();
+        */
 
     }
     catch (ex9){alert('Error resize: '+ex9.message);}
@@ -538,9 +622,4 @@ function act(deltaTime){
     }
 }
 
-window.requestAnimationFrame=(function(){
-    return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        function(callback){window.setTimeout(callback,17);};
-})();
+
