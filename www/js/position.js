@@ -91,6 +91,34 @@ function verMenu(option){
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
 
+function obtenerWatchAcc()
+{
+    try
+    {
+        var sensorAcc = null;
+        alert('Antes obtenerWatchAcc');
+        var options = { frequency: 1000 }
+        sensorAcc = navigator.accelerometer.watchAcceleration(onSuccessWatchAcc, onErrorWatchAcc, options);
+        alert('Después obtenerWatchAcc');
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function onSuccessWatchAcc(acceleration) {
+    try
+    {
+        Xposition.innerHTML = acceleration.x;
+        Yposition.innerHTML = acceleration.y;
+        Zposition.innerHTML = acceleration.z;
+        Tposition.innerHTML = acceleration.timestamp ;
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function onErrorWatchAcc() {
+    alert('onErrorWatchAcc!');
+}
+
 function obtenerXYZ(){
 
     var sensorAcc = null;
@@ -101,7 +129,7 @@ function obtenerXYZ(){
         sensorAcc = navigator.accelerometer.getCurrentAcceleration(onSuccess, onError)
         alert('Después getCurrentAcceleration');
     }
-    catch (ex9){alert('Error exception: '+ex9.message);}
+    catch (ex9){alert('Error obtenerXYZ: '+ex9.message);}
 
 
 }
