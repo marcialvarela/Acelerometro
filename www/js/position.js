@@ -127,9 +127,9 @@ function fixedXYZ_Motion(){
 
     try
     {
-        XpositionF.innerHTML = document.getElementById('Xposition').innerHTML;
-        YpositionF.innerHTML = document.getElementById('Yposition').innerHTML;
-        ZpositionF.innerHTML = document.getElementById('Zposition').innerHTML;
+        XpositionF.innerHTML = document.getElementById('XpositionM').innerHTML;
+        YpositionF.innerHTML = document.getElementById('YpositionM').innerHTML;
+        ZpositionF.innerHTML = document.getElementById('ZpositionM').innerHTML;
 
     }
     catch (ex9){alert('Error fixedXYZ_Motion: '+ex9.message);}
@@ -163,9 +163,9 @@ function deviceMotionUpdate(e){
         var X = e.accelerationIncludingGravity.x.toFixed(2);
         var Y = e.accelerationIncludingGravity.y.toFixed(2);
         var Z = e.accelerationIncludingGravity.z.toFixed(2);
-        Xposition.innerHTML = X;
-        Yposition.innerHTML = Y;
-        Zposition.innerHTML = Z;
+        XpositionM.innerHTML = X;
+        YpositionM.innerHTML = Y;
+        ZpositionM.innerHTML = Z;
 
 
 /*
