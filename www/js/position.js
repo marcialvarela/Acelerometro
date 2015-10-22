@@ -167,9 +167,10 @@ function fixedXYZ_Motion(){
 function obtenerXYZ_Motion_Stop(e) {
     try
     {
-        Xposition.innerHTML = '0.00';
-        Yposition.innerHTML = '0.00';
-        Zposition.innerHTML = '0.00';
+        XpositionM.innerHTML = '0.00';
+        YpositionM.innerHTML = '0.00';
+        ZpositionM.innerHTML = '0.00';
+        TpositionM.innerHTML = '0.00';
 
         window.removeEventListener("devicemotion", deviceMotionUpdate, true);
     }
@@ -191,9 +192,12 @@ function deviceMotionUpdate(e){
         var X = e.accelerationIncludingGravity.x.toFixed(2);
         var Y = e.accelerationIncludingGravity.y.toFixed(2);
         var Z = e.accelerationIncludingGravity.z.toFixed(2);
+        var T = e.accelerationIncludingGravity.timestamp;
+
         XpositionM.innerHTML = X;
         YpositionM.innerHTML = Y;
         ZpositionM.innerHTML = Z;
+        ZpositionT.innerHTML = T;
 
 
 /*
