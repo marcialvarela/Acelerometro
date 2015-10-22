@@ -472,7 +472,7 @@ function onSuccessCompassMap(heading) {
         //element.innerHTML = calculateDegrees(degrees);
 
         var elemPoint = document.getElementById('divPoint');
-        var iDeg = degrees * (-1);
+        var iDeg = degrees;
         elemPoint.style.transform = "rotate("+ iDeg +"deg)";
     }
     catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
