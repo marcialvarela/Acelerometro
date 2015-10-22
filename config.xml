@@ -45,7 +45,10 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
 
-    <gap:plugin name="cordova-plugin-pedometer" />
+    <!--<gap:plugin name="cordova-plugin-pedometer" />-->
+    <feature name="Podometer">
+        <param name="android-package" value="cordova-plugin-pedometer" />
+    </feature>
 
 
 

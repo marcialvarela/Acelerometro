@@ -1,0 +1,64 @@
+{
+  "name": "cordova-plugin-pedometer",
+  "version": "0.3.3",
+  "author": {
+    "name": "Lee Crossley",
+    "email": "leee@hotmail.co.uk",
+    "url": "http://ilee.co.uk/"
+  },
+  "description": "Cordova / PhoneGap Plugin for the Core Motion Pedometer to fetch pedestrian-related data, such as step counts and other information about the distance travelled.",
+  "cordova": {
+    "id": "cordova-plugin-pedometer",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leecrossley/cordova-plugin-pedometer.git"
+  },
+  "keywords": [
+    "cordova",
+    "core motion",
+    "pedometer",
+    "steps",
+    "distance",
+    "pedestrian",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leecrossley/cordova-plugin-pedometer/issues"
+  },
+  "homepage": "https://github.com/leecrossley/cordova-plugin-pedometer#readme",
+  "gitHead": "44b92abea07782077c1a1f9f734036ef66bc34bd",
+  "_id": "cordova-plugin-pedometer@0.3.3",
+  "scripts": {},
+  "_shasum": "56d62e75ca4324d43aa9a68c2a57cdc607e83f19",
+  "_from": "cordova-plugin-pedometer@*",
+  "_npmVersion": "2.5.1",
+  "_nodeVersion": "0.12.0",
+  "_npmUser": {
+    "name": "leecrossley",
+    "email": "leee@hotmail.co.uk"
+  },
+  "maintainers": [
+    {
+      "name": "leecrossley",
+      "email": "leee@hotmail.co.uk"
+    }
+  ],
+  "dist": {
+    "shasum": "56d62e75ca4324d43aa9a68c2a57cdc607e83f19",
+    "tarball": "http://registry.npmjs.org/cordova-plugin-pedometer/-/cordova-plugin-pedometer-0.3.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-pedometer/-/cordova-plugin-pedometer-0.3.3.tgz"
+}
