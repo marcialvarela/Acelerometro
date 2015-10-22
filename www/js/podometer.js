@@ -11,7 +11,9 @@ function startPodometer()
   alert('entra startPodometer');
 
   try {
-   Pedometer.startPedometerUpdates(successHandler, onError);
+   //Pedometer.startPedometerUpdates(successHandler, onError);
+   Pedometer.prototype.startPedometerUpdates(successHandler, onError);
+
    alert('Pasa en startPodometer');
 
   }
