@@ -114,7 +114,7 @@ function onSuccessWatchAcc(acceleration) {
         var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
         var ZposWatch = 'Z: ' + Zposition.innerHTML;
 
-        XYZpositionWatch.innerHTML = XYZpositionWatch.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
+        XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
