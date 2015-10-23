@@ -110,9 +110,9 @@ function onSuccessWatchAcc(acceleration) {
         Zposition.innerHTML = acceleration.z.toFixed(3);
         Tposition.innerHTML = acceleration.timestamp ;
 
-        var XposWatch = ' X: ' + Xposition.innerHTML;
-        var YposWatch = ' Y: ' + Yposition.innerHTML;
-        var ZposWatch = ' Z: ' + Zposition.innerHTML;
+        var XposWatch = 'X: ' + Xposition.innerHTML + '; ';
+        var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
+        var ZposWatch = 'Z: ' + Zposition.innerHTML;
 
         XYZpositionWatch.innerHTML = XYZpositionWatch.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
     }
@@ -189,6 +189,8 @@ function obtenerXYZ_Motion_Stop(e) {
             Yposition.innerHTML = '0.00';
             Zposition.innerHTML = '0.00';
             Tposition.innerHTML = '0.00';
+
+            XYZpositionWatch.innerHTML = 'X: 0.00; Y: 0.00; Z:0.00';
         }
 
 
