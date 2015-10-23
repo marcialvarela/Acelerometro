@@ -110,9 +110,11 @@ function onSuccessWatchAcc(acceleration) {
         Zposition.innerHTML = acceleration.z.toFixed(3);
         Tposition.innerHTML = acceleration.timestamp ;
 
-        XpositionW.innerHTML = XpositionW.innerHTML + '<br/>' + Xposition.innerHTML;
-        YpositionW.innerHTML = Yposition.innerHTML + '<br/>' + Yposition.innerHTML;
-        ZpositionW.innerHTML += Zposition.innerHTML + '<br/>' + Zposition.innerHTML;
+        var XposWatch = ' X: ' + Xposition.innerHTML;
+        var YposWatch = ' Y: ' + Yposition.innerHTML;
+        var ZposWatch = ' Z: ' + Zposition.innerHTML;
+
+        XYZpositionWatch.innerHTML = XYZpositionWatch.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
