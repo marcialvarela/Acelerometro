@@ -31,6 +31,10 @@
  cordova-plugin-stepcounter ANDROID KIT-KAT 4.4
  https://github.com/texh/cordova-plugin-stepcounter
 
+
+ Instrucciones de PODOMETRO... Interesante.. en ingles
+ http://www.analog.com/library/analogdialogue/archives/44-06/pedometer.html
+
 * */
 
 function startPodometer()
