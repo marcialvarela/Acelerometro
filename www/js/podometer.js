@@ -26,6 +26,11 @@
 
  Install: npm install cordova-plugin-pedometer
 
+
+
+ cordova-plugin-stepcounter ANDROID KIT-KAT 4.4
+ https://github.com/texh/cordova-plugin-stepcounter
+
 * */
 
 function startPodometer()

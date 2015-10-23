@@ -30,6 +30,7 @@ window.requestAnimationFrame=(function(){
 /* ****************************************************************************************** */
 /*          P O S I C I O N A M I E N T O    -    A C E L E R O M E T R O
  /* ****************************************************************************************** */
+var watchID_ACC = null;
 
 Xposition.innerHTML = '0.00';
 Yposition.innerHTML = '0.00';
@@ -95,11 +96,8 @@ function obtenerWatchAcc()
 {
     try
     {
-        var sensorAcc = null;
-        alert('Antes obtenerWatchAcc');
-        var options = { frequency: 1000 }
-        sensorAcc = navigator.accelerometer.watchAcceleration(onSuccessWatchAcc, onErrorWatchAcc, options);
-        alert('Después obtenerWatchAcc');
+        var options = { frequency: 500 }
+        watchID_ACC = navigator.accelerometer.watchAcceleration(onSuccessWatchAcc, onErrorWatchAcc, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -107,9 +105,9 @@ function obtenerWatchAcc()
 function onSuccessWatchAcc(acceleration) {
     try
     {
-        Xposition.innerHTML = acceleration.x;
-        Yposition.innerHTML = acceleration.y;
-        Zposition.innerHTML = acceleration.z;
+        Xposition.innerHTML = acceleration.x.toFixed(3);
+        Yposition.innerHTML = acceleration.y.toFixed(3);
+        Zposition.innerHTML = acceleration.z.toFixed(3);
         Tposition.innerHTML = acceleration.timestamp ;
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -159,6 +157,7 @@ function fixedXYZ_Motion(){
         YpositionF.innerHTML = document.getElementById('YpositionM').innerHTML;
         ZpositionF.innerHTML = document.getElementById('ZpositionM').innerHTML;
 
+
     }
     catch (ex9){alert('Error fixedXYZ_Motion: '+ex9.message);}
 
@@ -167,12 +166,28 @@ function fixedXYZ_Motion(){
 function obtenerXYZ_Motion_Stop(e) {
     try
     {
+        //STOP motion
         XpositionM.innerHTML = '0.00';
         YpositionM.innerHTML = '0.00';
         ZpositionM.innerHTML = '0.00';
         TpositionM.innerHTML = '0.00';
 
         window.removeEventListener("devicemotion", deviceMotionUpdate, true);
+
+
+        //STOP Watch
+        if (watchID_ACC) {
+            navigator.accelerometer.clearWatch(watchID_ACC);
+            watchID_ACC = null;
+            Xposition.innerHTML = '0.00';
+            Yposition.innerHTML = '0.00';
+            Zposition.innerHTML = '0.00';
+            Tposition.innerHTML = '0.00';
+        }
+
+
+        //STOP Acceleration
+
     }
     catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
 }
