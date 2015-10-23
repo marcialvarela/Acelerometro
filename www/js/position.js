@@ -96,12 +96,8 @@ function clearWatchAcc()
 {
     try
     {
-        //STOP Watch
-        if (watchID_ACC) {
-
-            var XposWatch = 'X: 0.00; Y: 0.00; X: 0.00;';
-            XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + '<br/>';
-        }
+        var XposWatch = 'X: 0.00; Y: 0.00; X: 0.00;';
+        XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch;
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 
