@@ -96,10 +96,7 @@ function clearWatchAcc()
 {
     try
     {
-        alert('clearWatchAcc');
-        //var XposWatch = 'X: 0.00; Y: 0.00; X: 0.00;';
-        var XposWatch = 'KKKKKKK';
-        XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch;
+        XYZpositionW.innerHTML = '';
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 
