@@ -120,17 +120,18 @@ function onSuccessWatchAcc(acceleration) {
         var a_z = (acceleration.z)/4;
         var a_time = acceleration.timestamp;
 
-        if(a_x >= 0)
-            a_x = '&nbsp;' + a_x;
-        if(a_y >= 0)
-            a_y = '&nbsp;' + a_y;
-        if(a_z >= 0)
-            a_z = '&nbsp;' + a_z;
-
         Xposition.innerHTML = a_x.toFixed(3);
         Yposition.innerHTML = a_y.toFixed(3);
         Zposition.innerHTML = a_z.toFixed(3);
         Tposition.innerHTML = a_time;
+
+        if(a_x >= 0)
+            Xposition.innerHTML = '&nbsp;' + Xposition.innerHTML;
+        if(a_y >= 0)
+            Yposition.innerHTML = '&nbsp;' + Yposition.innerHTML;
+        if(a_z >= 0)
+            Zposition.innerHTML = '&nbsp;' + Zposition.innerHTML;
+
 
         var XposWatch = 'X: ' + Xposition.innerHTML + '; ';
         var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
