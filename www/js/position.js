@@ -109,6 +109,10 @@ function onSuccessWatchAcc(acceleration) {
         Yposition.innerHTML = acceleration.y.toFixed(3);
         Zposition.innerHTML = acceleration.z.toFixed(3);
         Tposition.innerHTML = acceleration.timestamp ;
+
+        XpositionW.innerHTML = XpositionW.innerHTML + '<br/>' + Xposition.innerHTML;
+        YpositionW.innerHTML = Yposition.innerHTML + '<br/>' + Yposition.innerHTML;
+        ZpositionW.innerHTML += Zposition.innerHTML + '<br/>' + Zposition.innerHTML;
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
