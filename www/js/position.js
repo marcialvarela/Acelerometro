@@ -92,6 +92,21 @@ function verMenu(option){
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
 
+function clearWatchAcc()
+{
+    try
+    {
+        //STOP Watch
+        if (watchID_ACC) {
+
+            var XposWatch = 'X: 0.00; Y: 0.00; X: 0.00;';
+            XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + '<br/>';
+        }
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+
+}
+
 function obtenerWatchAcc()
 {
     try
@@ -185,14 +200,7 @@ function obtenerXYZ_Motion_Stop(e) {
         if (watchID_ACC) {
             navigator.accelerometer.clearWatch(watchID_ACC);
             watchID_ACC = null;
-            Xposition.innerHTML = '0.00';
-            Yposition.innerHTML = '0.00';
-            Zposition.innerHTML = '0.00';
-            Tposition.innerHTML = '0.00';
-
-            XYZpositionWatch.innerHTML = 'X: 0.00; Y: 0.00; Z:0.00';
         }
-
 
         //STOP Acceleration
 
