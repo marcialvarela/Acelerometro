@@ -47,7 +47,7 @@ function millisecondCounter(){
         msec = "0" +msec;
     }
     //document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
-    Xposition.innerHTML = "0:" + sec + ":" + msec;
+    ChronoPos.innerHTML = "0:" + sec + ":" + msec;
 
     timerID = setTimeout("millisecondCounter()", 10);
 }
@@ -70,15 +70,26 @@ function stepCounter()
         start = new Date();
         millisecondCounter();
 
-        var options = { frequency: 100 }
-        watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep, onErrorWatchStep, options);
+        //var options = { frequency: 100 }
+        //watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep, onErrorWatchStep, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
+function clearCounter(){
+
+    ChronoPos.innerHTML = "0:00:000";
+    //clearTimeout(timerID);
+
 }
 
 function stepCounter_Stop(e) {
     try
     {
+        //STOP CHRONO
+        //ChronoPos.innerHTML = "00:00:000";
+        clearTimeout(timerID);
+
         //STOP motion
         XpositionM.innerHTML = '0.00';
         YpositionM.innerHTML = '0.00';
@@ -129,7 +140,7 @@ function onSuccessWatchStep(acceleration) {
         var ZposWatch = 'Z: ' + Zposition.innerHTML;
 
         //Obtener MAX X
-        if(a_x >= MAX_x){
+/*        if(a_x >= MAX_x){
             MAX_x = a_x;
         }
 
@@ -137,7 +148,7 @@ function onSuccessWatchStep(acceleration) {
         if(a_y >= MAX_y){
             MAX_y = a_y;
         }
-
+*/
 
         // Pintar los picos Min y Max en otro color (tiempo entre 200ms y 2000ms)
         //XYZpositionW.style.color='#00FF00';
@@ -152,7 +163,11 @@ function onSuccessWatchStep(acceleration) {
                     MAX_z = a_z;
                     ZposWatch  = '+&nbsp;' + ZposWatch;
                 }
-                else if(a_z < MIN_z){
+                else{
+                    MIN_z = a_z;
+                }
+
+                if(a_z < MIN_z){
                     MIN_z = a_z;
                     ZposWatch  = '-&nbsp;' + ZposWatch;
                 }
