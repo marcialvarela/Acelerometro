@@ -181,7 +181,7 @@ function onSuccessWatchStep(acceleration) {
             }
             else{
                 Ztime = '--:--:---';
-                XYZpositionW.innerHTML = Ztime + ' *** ' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
             }
         }
         else {
@@ -189,7 +189,7 @@ function onSuccessWatchStep(acceleration) {
             //start = new Date();
             //millisecondCounter();
             Ztime = '--:--:---';
-            XYZpositionW.innerHTML = Ztime + ' *** ' + ZposWatch + '<br/>';
+            XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
         }
 
 
