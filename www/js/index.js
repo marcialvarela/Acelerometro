@@ -47,3 +47,8 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+/*************************** EXIT APP - INI ***************************/
+function exitApp() {
+    navigator.app.exitApp();
+}
