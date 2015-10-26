@@ -76,6 +76,28 @@ function stepCounter()
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
 
+function stepCounter_Stop(e) {
+    try
+    {
+        //STOP motion
+        XpositionM.innerHTML = '0.00';
+        YpositionM.innerHTML = '0.00';
+        ZpositionM.innerHTML = '0.00';
+        TpositionM.innerHTML = '0.00';
+
+        window.removeEventListener("devicemotion", deviceMotionUpdate, true);
+
+
+        //STOP Watch
+        if (watchID_STEP) {
+            navigator.accelerometer.clearWatch(watchID_STEP);
+            watchID_STEP = null;
+        }
+
+    }
+    catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
+}
+
 function onSuccessWatchStep(acceleration) {
     try
     {
