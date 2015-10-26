@@ -172,24 +172,24 @@ function onSuccessWatchStep(acceleration) {
                     }
                 }
 
-                //XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
                 XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + '*** ' + ZposWatch + '<br/>';
 
 
                 // INICIAR CRONO !!!
-                start = new Date();
-                millisecondCounter();
+                //start = new Date();
+                //millisecondCounter();
             }
             else{
-                //XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
                 Ztime = '--:--:---';
                 XYZpositionW.innerHTML = Ztime + ' *** ' + ZposWatch + '<br/>';
             }
         }
         else {
             // INICIAR CRONO !!!
-            start = new Date();
-            millisecondCounter();
+            //start = new Date();
+            //millisecondCounter();
+            Ztime = '--:--:---';
+            XYZpositionW.innerHTML = Ztime + ' *** ' + ZposWatch + '<br/>';
         }
 
 
