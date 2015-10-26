@@ -173,7 +173,7 @@ function onSuccessWatchStep(acceleration) {
                 }
 
                 //XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
-                XYZpositionW.innerHTML = Ztime + '*** ' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + '*** ' + ZposWatch + '<br/>';
 
 
                 // INICIAR CRONO !!!
