@@ -15,8 +15,8 @@ var INI_time;
 var FIN_time;
 
 
-Xposition.innerHTML = '0.00';
-Yposition.innerHTML = '0.00';
+//Xposition.innerHTML = '0.00';
+//Yposition.innerHTML = '0.00';
 Zposition.innerHTML = '0.00';
 Tposition.innerHTML = '0.00';
 
@@ -82,6 +82,7 @@ function clearCounter(){
     try
     {
         ChronoPos.innerHTML = "0:00:000";
+        XYZpositionW.innerHTML = "";
     }
     catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
 
@@ -129,10 +130,12 @@ function onSuccessWatchStep(acceleration) {
         //var ss_time = a_time.format("HH/mm/ss");
         //Tposition.innerHTML = ss_time;
 
+        /*
         if(a_x >= 0)
             Xposition.innerHTML = '&nbsp;' + Xposition.innerHTML;
         if(a_y >= 0)
             Yposition.innerHTML = '&nbsp;' + Yposition.innerHTML;
+        */
         if(a_z >= 0)
             Zposition.innerHTML = '&nbsp;' + Zposition.innerHTML;
 
@@ -183,16 +186,16 @@ function onSuccessWatchStep(acceleration) {
                 //millisecondCounter();
             }
             else{
-                Ztime = '--:--:---';
+                Ztime = '-:--:---';
                 XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
             }
         }
         else {
             // INICIAR CRONO !!!
-            //start = new Date();
-            //millisecondCounter();
-            Ztime = '--:--:---';
+            Ztime = '-:--:---';
             XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
+            start = new Date();
+            millisecondCounter();
         }
 
 
