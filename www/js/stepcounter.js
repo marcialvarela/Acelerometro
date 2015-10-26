@@ -92,8 +92,8 @@ function onSuccessWatchStep(acceleration) {
         Yposition.innerHTML = a_y.toFixed(3);
         Zposition.innerHTML = a_z.toFixed(3);
 
-        var ss_time = a_time.format("HH/mm/ss");
-        Tposition.innerHTML = ss_time;
+        //var ss_time = a_time.format("HH/mm/ss");
+        //Tposition.innerHTML = ss_time;
 
         if(a_x >= 0)
             Xposition.innerHTML = '&nbsp;' + Xposition.innerHTML;
