@@ -79,18 +79,23 @@ function stepCounter()
 
 function clearCounter(){
 
-    ChronoPos.innerHTML = "0:00:000";
+    try
+    {
+        ChronoPos.innerHTML = "0:00:000";
+    }
+    catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
 
 }
 
 function stepCounter_Stop(e) {
     try
     {
-        //STOP CHRONO
-        clearTimeout(timerID);
 
-        //STOP Watch
         if (watchID_STEP) {
+            //STOP CHRONO
+            clearTimeout(timerID);
+
+            //STOP Watch
             navigator.accelerometer.clearWatch(watchID_STEP);
             watchID_STEP = null;
         }
@@ -117,8 +122,8 @@ function onSuccessWatchStep(acceleration) {
             primerLectura = 0;
         }
 
-        Xposition.innerHTML = a_x.toFixed(3);
-        Yposition.innerHTML = a_y.toFixed(3);
+        //Xposition.innerHTML = a_x.toFixed(3);
+        //Yposition.innerHTML = a_y.toFixed(3);
         Zposition.innerHTML = a_z.toFixed(3);
 
         //var ss_time = a_time.format("HH/mm/ss");
@@ -131,9 +136,10 @@ function onSuccessWatchStep(acceleration) {
         if(a_z >= 0)
             Zposition.innerHTML = '&nbsp;' + Zposition.innerHTML;
 
-        var XposWatch = 'X: ' + Xposition.innerHTML + '; ';
-        var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
+        //var XposWatch = 'X: ' + Xposition.innerHTML + '; ';
+        //var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
         var ZposWatch = 'Z: ' + Zposition.innerHTML;
+        var Ztime = ChronoPos.innerHTML;
 
         //Obtener MAX X
 /*        if(a_x >= MAX_x){
@@ -166,14 +172,18 @@ function onSuccessWatchStep(acceleration) {
                     }
                 }
 
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
+                //XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = Ztime + '*** ' + ZposWatch + '<br/>';
+
 
                 // INICIAR CRONO !!!
                 start = new Date();
                 millisecondCounter();
             }
             else{
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
+                //XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
+                Ztime = '--:--:---';
+                XYZpositionW.innerHTML = Ztime + ' *** ' + ZposWatch + '<br/>';
             }
         }
         else {
