@@ -150,11 +150,11 @@ function onSuccessWatchStep(acceleration) {
                 //Obtener MAX Z
                 if(a_z >= MAX_z){
                     MAX_z = a_z;
-                    XYZpositionW.style.color='#00FF00';
+                    ZposWatch  = '+&nbsp;' + ZposWatch;
                 }
                 else if(a_z < MIN_z){
                     MIN_z = a_z;
-                    XYZpositionW.style.color='#FF0000';
+                    ZposWatch  = '-&nbsp;' + ZposWatch;
                 }
                 XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
 
