@@ -27,6 +27,7 @@ var diff = 0;
 var timerID = 0;
 var msec = 0;
 var sec = 0;
+var primerLectura = 1;
 
 function millisecondCounter(){
 
@@ -70,8 +71,8 @@ function stepCounter()
         start = new Date();
         millisecondCounter();
 
-        var options = { frequency: 100 }
-        watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep, onErrorWatchStep, options);
+        //var options = { frequency: 100 }
+        //watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep, onErrorWatchStep, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -79,7 +80,6 @@ function stepCounter()
 function clearCounter(){
 
     ChronoPos.innerHTML = "0:00:000";
-    //clearTimeout(timerID);
 
 }
 
@@ -87,17 +87,7 @@ function stepCounter_Stop(e) {
     try
     {
         //STOP CHRONO
-        //ChronoPos.innerHTML = "00:00:000";
         clearTimeout(timerID);
-
-        //STOP motion
-        XpositionM.innerHTML = '0.00';
-        YpositionM.innerHTML = '0.00';
-        ZpositionM.innerHTML = '0.00';
-        TpositionM.innerHTML = '0.00';
-
-        window.removeEventListener("devicemotion", deviceMotionUpdate, true);
-
 
         //STOP Watch
         if (watchID_STEP) {
@@ -120,6 +110,12 @@ function onSuccessWatchStep(acceleration) {
         var a_y = (acceleration.y)/4;
         var a_z = (acceleration.z)/4;
         var a_time = acceleration.timestamp;
+
+        if(primerLectura == 1){
+            MAX_z = a_z;
+            MIN_z = a_z;
+            primerLectura = 0;
+        }
 
         Xposition.innerHTML = a_x.toFixed(3);
         Yposition.innerHTML = a_y.toFixed(3);
@@ -159,18 +155,17 @@ function onSuccessWatchStep(acceleration) {
             if (msec >= 200 && sec <=2){
                 //Estoy dentro de un PASO "correcto"
                 //Obtener MAX Z
-                if(a_z >= MAX_z){
+                if(a_z > MAX_z){
                     MAX_z = a_z;
                     ZposWatch  = '+&nbsp;' + ZposWatch;
                 }
                 else{
-                    MIN_z = a_z;
+                    if(a_z < MIN_z){
+                        MIN_z = a_z;
+                        ZposWatch  = '-&nbsp;' + ZposWatch;
+                    }
                 }
 
-                if(a_z < MIN_z){
-                    MIN_z = a_z;
-                    ZposWatch  = '-&nbsp;' + ZposWatch;
-                }
                 XYZpositionW.innerHTML = XYZpositionW.innerHTML + XposWatch + YposWatch +ZposWatch + '<br/>';
 
                 // INICIAR CRONO !!!
