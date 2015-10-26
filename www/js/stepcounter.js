@@ -71,7 +71,7 @@ function stepCounter()
         start = new Date();
         millisecondCounter();
 
-        var options = { frequency: 100 }
+        var options = { frequency: 300 }
         watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep, onErrorWatchStep, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
