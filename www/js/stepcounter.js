@@ -170,9 +170,12 @@ function onSuccessWatchStep(acceleration) {
                         MIN_z = a_z;
                         ZposWatch  = '-&nbsp;' + ZposWatch;
                     }
+                    else{
+                        ZposWatch  = '&nbsp;&nbsp;' + ZposWatch;
+                    }
                 }
 
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + '*** ' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
 
 
                 // INICIAR CRONO !!!
