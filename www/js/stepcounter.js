@@ -92,9 +92,10 @@ function stepCounter_Stop(e) {
     try
     {
 
+        //STOP CHRONO
+        clearTimeout(timerID);
+        
         if (watchID_STEP) {
-            //STOP CHRONO
-            clearTimeout(timerID);
 
             //STOP Watch
             navigator.accelerometer.clearWatch(watchID_STEP);
