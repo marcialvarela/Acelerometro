@@ -212,8 +212,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
     //Calcular X e Y en funcion de los grados
     //XpositionDeg
     //YpositionDeg
-    var y = Math.sin(p_degree);
-    var x = Math.cos(p_degree);
+    var y = Math.sin(p_degree)*10;
+    var x = Math.cos(p_degree)*10;
 
     p_x =  p_ant_x + x;
     p_y =  p_ant_y + y;
@@ -259,5 +259,18 @@ function paintStep()
 
     var options = { frequency: 300 }
     watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
+
+}
+
+function stopStep(){
+
+    //STOP CHRONO
+    clearTimeout(timerID);
+    clearCounter();
+
+    if (watchID) {
+        navigator.compass.clearWatch(watchID);
+        watchID = null;
+    }
 
 }
