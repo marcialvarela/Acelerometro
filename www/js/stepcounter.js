@@ -225,7 +225,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
     // Mueve PunteroMapa
     movePositionSTEP(PointX_a, PointY_a);
-    
+
 }
 
 function mueveCompass(p_x, p_y)
@@ -247,5 +247,8 @@ function paintStep()
     }
     else{
         //Estarse quieto
+        msec = 0;
+        sec = 0;
+        stepCounterIni()
     }
 }
