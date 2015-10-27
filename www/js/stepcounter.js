@@ -94,7 +94,7 @@ function stepCounter_Stop(e) {
 
         //STOP CHRONO
         clearTimeout(timerID);
-        
+
         if (watchID_STEP) {
 
             //STOP Watch
@@ -188,15 +188,19 @@ function onSuccessWatchStep(acceleration) {
             }
             else{
                 Ztime = '-:--:---';
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' ***&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
             }
         }
         else {
             // INICIAR CRONO !!!
             Ztime = '-:--:---';
-            XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
-            start = new Date();
-            millisecondCounter();
+            XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' ***&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
+            if (watchID_STEP) {
+                //STOP Watch
+                navigator.accelerometer.clearWatch(watchID_STEP);
+                watchID_STEP = null;
+            }
+            stepCounter();
         }
 
 
