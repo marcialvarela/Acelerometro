@@ -610,6 +610,27 @@ function runLine_example(){
 
 }
 
+function movePositionSTEP(x, y){
+
+    var x_1 = 0;
+    var y_1 = 0;
+
+    var elemPoint = document.getElementById('divPoint');
+    var elemPointPosition = document.getElementById('divPosition');
+
+    try
+    {
+        x_1 = x - (elemPointPosition.width/2);
+        y_1 = y - (elemPointPosition.height/2) + 50;
+
+        elemPoint.style.top = y_1+'px';
+        elemPoint.style.left = x_1+'px';
+    }
+    catch (ex9){alert('Error paintLine: '+ex9.message);}
+
+}
+
+
 function movePositionPoint(x, y){
 
     var x_1 = 0;

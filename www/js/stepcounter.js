@@ -220,6 +220,12 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
     ctx.lineTo(p_x, p_y);
     ctx.stroke();
 
+    PointX_a = p_x;
+    PointY_a = p_y;
+
+    // Mueve PunteroMapa
+    movePositionSTEP(PointX_a, PointY_a);
+    
 }
 
 function mueveCompass(p_x, p_y)
