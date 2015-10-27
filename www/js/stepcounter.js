@@ -68,6 +68,8 @@ function stepCounter()
 {
     try
     {
+        primerLectura = 1;
+
         start = new Date();
         millisecondCounter();
 
@@ -124,41 +126,14 @@ function onSuccessWatchStep(acceleration) {
             primerLectura = 0;
         }
 
-        //Xposition.innerHTML = a_x.toFixed(3);
-        //Yposition.innerHTML = a_y.toFixed(3);
         Zposition.innerHTML = a_z.toFixed(3);
 
-        //var ss_time = a_time.format("HH/mm/ss");
-        //Tposition.innerHTML = ss_time;
-
-        /*
-        if(a_x >= 0)
-            Xposition.innerHTML = '&nbsp;' + Xposition.innerHTML;
-        if(a_y >= 0)
-            Yposition.innerHTML = '&nbsp;' + Yposition.innerHTML;
-        */
         if(a_z >= 0)
             Zposition.innerHTML = '&nbsp;' + Zposition.innerHTML;
 
-        //var XposWatch = 'X: ' + Xposition.innerHTML + '; ';
-        //var YposWatch = 'Y: ' + Yposition.innerHTML + '; ';
         var ZposWatch = 'Z: ' + Zposition.innerHTML;
         var Ztime = ChronoPos.innerHTML;
 
-        //Obtener MAX X
-/*        if(a_x >= MAX_x){
-            MAX_x = a_x;
-        }
-
-        //Obtener MAX Y
-        if(a_y >= MAX_y){
-            MAX_y = a_y;
-        }
-*/
-
-        // Pintar los picos Min y Max en otro color (tiempo entre 200ms y 2000ms)
-        //XYZpositionW.style.color='#00FF00';
-        //XYZpositionW.style.color='#FF0000';
 
         if (msec >= 0 && sec <=5) {
 
@@ -179,22 +154,18 @@ function onSuccessWatchStep(acceleration) {
                     }
                 }
 
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' *** ' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' 1** ' + ZposWatch + '<br/>';
 
-
-                // INICIAR CRONO !!!
-                //start = new Date();
-                //millisecondCounter();
             }
             else{
                 Ztime = '-:--:---';
-                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' ***&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
+                XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' 2**&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
             }
         }
         else {
             // INICIAR CRONO !!!
             Ztime = '-:--:---';
-            XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' ***&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
+            XYZpositionW.innerHTML = XYZpositionW.innerHTML + Ztime + ' 3**&nbsp;&nbsp;&nbsp;' + ZposWatch + '<br/>';
             if (watchID_STEP) {
                 //STOP Watch
                 navigator.accelerometer.clearWatch(watchID_STEP);
@@ -222,4 +193,48 @@ function step_NEW(){
 
 function step_OLD(){
 
+}
+
+
+/* ******************************************************************** */
+/*              P A I N T   S T E P
+/* ******************************************************************** */
+
+function pintaPaso(p_ant_x, p_ant_y, p_degree)
+{
+    //https://www.youtube.com/watch?v=RY_cl4GFM1U
+
+    ctx.beginPath();
+    ctx.moveTo(p_ant_x, p_ant_y);
+    //Ver dirección de la brújula y pintar linea
+
+    //Calcular X e Y en funcion de los grados
+    //XpositionDeg
+    //YpositionDeg
+    var y = Math.sin(p_degree);
+    var x = Math.cos(p_degree);
+
+    p_x =  p_ant_x + x;
+    p_y =  p_ant_y + y;
+
+    ctx.lineTo(p_x, p_y);
+    ctx.stroke();
+
+}
+
+function mueveCompass(p_x, p_y)
+{
+
+}
+
+function paintStep()
+{
+    if (msec >= 200 && sec <=2) {
+        // Pintar paso en dirección a la brújula
+        pintaPaso(PointX_a, PointY_a, iDegreeSTEP);
+
+    }
+    else{
+        //Estarse quieto
+    }
 }

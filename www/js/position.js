@@ -360,6 +360,7 @@ function stopWatch() {
 /*          M A P
  /* ****************************************************************************************** */
 var time=0;
+var iDegreeSTEP = 0;
 
 var canvas=null,ctx=null;
 var ctxPoint=null;
@@ -397,7 +398,8 @@ function initCanvas(){
         //paintPointT();
 
         //run();
-        startWatchMap();
+        //startWatchMap();
+        paintStep();
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -544,7 +546,8 @@ function onSuccessCompassMap(heading) {
 
         var elemPoint = document.getElementById('divPoint');
         var iDeg = degrees;
-        elemPoint.style.transform = "rotate("+ iDeg +"deg)";
+        iDegreeSTEP = degrees;
+        elemPoint.style.transform = "rotate("+ iDegreeSTEP +"deg)";
     }
     catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
 }
