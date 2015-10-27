@@ -108,6 +108,7 @@ function stepCounter_Stop(e) {
     catch (ex9){alert('Error obtenerXYZ_Motion_Stop: '+ex9.message);}
 }
 
+
 function onSuccessWatchStep(acceleration) {
     try
     {
@@ -228,10 +229,27 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
 }
 
-function mueveCompass(p_x, p_y)
-{
+function onSuccessWatchStep2(acceleration) {
+    try
+    {
 
+        if (msec >= 200 && sec <=2) {
+            // Pintar paso en dirección a la brújula
+            pintaPaso(PointX_a, PointY_a, iDegreeSTEP);
+
+        }
+        else{
+            if (sec > 2){
+                //Estarse quieto
+                msec = 0;
+                sec = 0;
+                stepCounterIni()
+            }
+        }
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
 }
+
 
 function paintStep()
 {
@@ -239,16 +257,7 @@ function paintStep()
     startWatchMap();
     stepCounterIni();
 
+    var options = { frequency: 300 }
+    watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
 
-    if (msec >= 200 && sec <=2) {
-        // Pintar paso en dirección a la brújula
-        pintaPaso(PointX_a, PointY_a, iDegreeSTEP);
-
-    }
-    else{
-        //Estarse quieto
-        msec = 0;
-        sec = 0;
-        stepCounterIni()
-    }
 }
