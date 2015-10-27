@@ -229,7 +229,10 @@ function mueveCompass(p_x, p_y)
 
 function paintStep()
 {
+
+    startWatchMap();
     stepCounterIni();
+
 
     if (msec >= 200 && sec <=2) {
         // Pintar paso en dirección a la brújula

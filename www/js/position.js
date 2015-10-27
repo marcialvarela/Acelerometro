@@ -399,7 +399,7 @@ function initCanvas(){
 
         //run();
         //startWatchMap();
-        paintStep();
+
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
@@ -545,9 +545,13 @@ function onSuccessCompassMap(heading) {
         //element.innerHTML = calculateDegrees(degrees);
 
         var elemPoint = document.getElementById('divPoint');
-        var iDeg = degrees;
+        //var iDeg = degrees;
         iDegreeSTEP = degrees;
         elemPoint.style.transform = "rotate("+ iDegreeSTEP +"deg)";
+
+        var element = document.getElementById('STEPpositionDeg');
+        element.innerHTML = calculateDegrees(iDegreeSTEP);
+
     }
     catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
 }
