@@ -233,10 +233,14 @@ function onSuccessWatchStep2(acceleration) {
     try
     {
 
-        if (msec >= 200 && sec <=2) {
-            // Pintar paso en dirección a la brújula
-            pintaPaso(PointX_a, PointY_a, iDegreeSTEP);
+        //if (msec >= 200 && sec <=2) {
+        if (sec == 2) {
 
+            if((PointX_a>10 && PointX_a <canvas.width - 10)
+               && (PointY_a>10 && PointY_a <canvas.height - 10) ){
+                // Pintar paso en dirección a la brújula
+                pintaPaso(PointX_a, PointY_a, iDegreeSTEP);
+            }
         }
         else{
             if (sec > 2){
@@ -267,10 +271,9 @@ function stopStep(){
     //STOP CHRONO
     clearTimeout(timerID);
     clearCounter();
-
-    if (watchID) {
-        navigator.compass.clearWatch(watchID);
-        watchID = null;
+    if (watchID_STEP) {
+        navigator.compass.clearWatch(watchID_STEP);
+        watchID_STEP = null;
     }
 
 }
