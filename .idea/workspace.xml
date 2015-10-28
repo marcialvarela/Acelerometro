@@ -27,8 +27,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2826087" vertical-offset="2068" max-vertical-offset="3553">
-              <caret line="134" column="76" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="76" />
+            <state vertical-scroll-proportion="-2.8369565" vertical-offset="2663" max-vertical-offset="3553">
+              <caret line="172" column="44" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -99,8 +99,8 @@
       <file leaf-file-name="stepcounter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/stepcounter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.725537" vertical-offset="3183" max-vertical-offset="5083">
-              <caret line="223" column="25" selection-start-line="223" selection-start-column="25" selection-end-line="223" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.5835322" vertical-offset="3795" max-vertical-offset="5083">
+              <caret line="252" column="18" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -109,8 +109,8 @@
       <file leaf-file-name="position.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/position.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.764706" vertical-offset="824" max-vertical-offset="12529">
-              <caret line="92" column="52" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
+            <state vertical-scroll-proportion="-7.7352943" vertical-offset="9121" max-vertical-offset="12563">
+              <caret line="552" column="64" selection-start-line="552" selection-start-column="51" selection-end-line="552" selection-end-column="64" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -1224,8 +1224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2826087" vertical-offset="2068" max-vertical-offset="3553">
-          <caret line="134" column="76" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="76" />
+        <state vertical-scroll-proportion="-2.8369565" vertical-offset="2663" max-vertical-offset="3553">
+          <caret line="172" column="44" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="44" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1294,8 +1294,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/position.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.764706" vertical-offset="824" max-vertical-offset="12529">
-          <caret line="92" column="52" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
+        <state vertical-scroll-proportion="-7.7352943" vertical-offset="9121" max-vertical-offset="12563">
+          <caret line="552" column="64" selection-start-line="552" selection-start-column="51" selection-end-line="552" selection-end-column="64" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1304,8 +1304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/stepcounter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.725537" vertical-offset="3183" max-vertical-offset="5083">
-          <caret line="223" column="25" selection-start-line="223" selection-start-column="25" selection-end-line="223" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.5835322" vertical-offset="3795" max-vertical-offset="5083">
+          <caret line="252" column="18" selection-start-line="252" selection-start-column="18" selection-end-line="252" selection-end-column="18" />
           <folding />
         </state>
       </provider>

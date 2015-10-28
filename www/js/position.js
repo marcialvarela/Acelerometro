@@ -550,11 +550,13 @@ function onSuccessCompassMap(heading) {
         //element.innerHTML = calculateDegrees(degrees);
 
         var elemPoint = document.getElementById('divPoint');
-        //var iDeg = degrees;
+        var elemPointPos = document.getElementById('divPosition');
+
         iDegreeSTEP = degrees;
         iDiffDegreeSTEP = 360 - iDegreeSTEP;
         //elemPoint.style.transform = "rotate("+ iDegreeSTEP +"deg)";
-        elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
+        //elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
+        elemPointPos.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
 
         var element = document.getElementById('STEPpositionDeg');
         element.innerHTML = calculateDegrees(iDegreeSTEP);

@@ -250,7 +250,7 @@ function onSuccessWatchStep2(acceleration) {
             if((PointX_a > margeWindow && PointX_a <canvas.width - margeWindow)
                && (PointY_a > margeWindow && PointY_a <canvas.height - margeWindow) ){
                 // Pintar paso en dirección a la brújula
-                pintaPaso(PointX_a, PointY_a, iDiffDegreeSTEP);
+                //pintaPaso(PointX_a, PointY_a, iDiffDegreeSTEP);
             }
         }
         else{
