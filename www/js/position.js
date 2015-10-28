@@ -48,7 +48,7 @@ function verMenu(option){
             document.getElementById('divMapFixed').style.visibility='hidden';
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
-            document.getElementById('divPodometer').style.visibility='hidden';
+            document.getElementById('triangleCompass').style.visibility='hidden';
         }
         else if (option==1){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -58,6 +58,7 @@ function verMenu(option){
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
             document.getElementById('divPodometer').style.visibility='hidden';
+            document.getElementById('triangleCompass').style.visibility='visible';
         }
         else if (option==2){
             document.getElementById('divAceletarion').style.visibility='hidden';
@@ -67,6 +68,7 @@ function verMenu(option){
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='visible';
             document.getElementById('divPodometer').style.visibility='hidden';
+            document.getElementById('triangleCompass').style.visibility='hidden';
             initCanvas();
         }
         else if (option==3){
@@ -77,6 +79,7 @@ function verMenu(option){
             document.getElementById('divPoint').style.visibility='visible';
             document.getElementById('divMapLabel').style.visibility='hidden';
             document.getElementById('divPodometer').style.visibility='visible';
+            document.getElementById('triangleCompass').style.visibility='hidden';
             initCanvas();
         }
         else{
@@ -87,6 +90,7 @@ function verMenu(option){
             document.getElementById('divPoint').style.visibility='hidden';
             document.getElementById('divMapLabel').style.visibility='hidden';
             document.getElementById('divPodometer').style.visibility='hidden';
+            document.getElementById('triangleCompass').style.visibility='hidden';
         }
     }
     catch (ex9){alert('Error exception: '+ex9.message);}

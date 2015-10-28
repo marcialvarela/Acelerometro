@@ -215,15 +215,17 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //var y = 10 * -1; //Math.sin(p_degree)*10;
         //var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
         var y = (Math.sin(p_degree)*10)*-1;
-        var x = (Math.cos(p_degree - 90)*10)*-1;
+        var x = (Math.cos(p_degree)*10)*-1;
 
         p_x =  p_ant_x + x;
         p_y =  p_ant_y + y;
 
         ctx.lineTo(p_x, p_y);
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 5;
 
-        ctx.strokeStyle = '#385D8A';// set line color
+        // Azul: #385D8A
+        // Naranja: #F97912
+        ctx.strokeStyle = '#F97912';// set line color
         ctx.stroke();
 
         PointX_a = p_x;
