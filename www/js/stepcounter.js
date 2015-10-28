@@ -269,7 +269,7 @@ function onSuccessWatchStep2(acceleration) {
 function paintStep()
 {
     try{
-        startWatchMap();
+        startWatchMapSTEP();    // Inicializa el puntero del mapa (Compass)
         stepCounterIni();
 
         var options = { frequency: 300 }
@@ -282,6 +282,8 @@ function stopStep(){
 
     try{
         //STOP CHRONO
+        stopWatchMapSTEP();
+
         clearTimeout(timerID);
         clearCounter();
 
@@ -292,3 +294,59 @@ function stopStep(){
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
+
+
+
+/**********************************************************************/
+/* M O V I M I E N T O    P U N T E R O    M A P A    C O M P A S S   */
+/**********************************************************************/
+var watchID_COMPASSSTEP = null;
+var iDiffDegreeSTEP = 0;
+var iDegreeFIX_STEP = 0;
+
+function startWatchMapSTEP() {
+
+    // Update compass every 3 seconds
+    try
+    {
+        var compassOptionsMap = { frequency: 300 };
+        watchID_COMPASSSTEP = navigator.compass.watchHeading(onSuccessCompassMapSTEP, onErrorCompassMapSTEP, compassOptionsMap);
+
+    }
+    catch (ex9){alert('Error startWatchMapSTEP: '+ex9.message);}
+}
+
+function stopWatchMapSTEP() {
+    try {
+        if (watchID_COMPASSSTEP) {
+            navigator.compass.clearWatch(watchID_COMPASSSTEP);
+            watchID_COMPASSSTEP = null;
+        }
+    }
+    catch (ex9) {alert('Error stopWatchMapSTEP: ' + ex9.message);}
+}
+
+function onSuccessCompassMapSTEP(heading) {
+    try {
+        var element = document.getElementById('heading');
+        var degrees = heading.magneticHeading;
+
+        var elemPoint = document.getElementById('divPoint');
+        //var elemPointPos = document.getElementById('divPosition');
+
+        iDegreeSTEP = degrees;
+        if (iDegreeFIX_STEP == 0){
+            iDegreeFIX_STEP = 360 - iDegreeSTEP;
+        }
+        iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
+        elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
+
+        document.getElementById('STEPpositionDeg').innerHTML = calculateDegrees(iDiffDegreeSTEP);;
+
+    }
+    catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
+}
+
+function onErrorCompassMapSTEP(error) {
+    alert('CompassError: ' + error.code);
+};

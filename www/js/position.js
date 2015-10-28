@@ -365,7 +365,6 @@ function stopWatch() {
  /* ****************************************************************************************** */
 var time=0;
 var iDegreeSTEP = 0;
-var iDiffDegreeSTEP = 0;
 
 var canvas=null,ctx=null;
 var ctxPoint=null;
