@@ -355,7 +355,9 @@ function onSuccessCompassMapSTEP(heading) {
         if (iDiffDegreeSTEP <0 ){
             iDiffDegreeSTEP = iDiffDegreeSTEP * (-1);
         }
-        var iDegreePosition = 360 - (iDegreeFIX_STEP + iDiffDegreeSTEP);
+        document.getElementById('ChronoPos').innerHTML = iDiffDegreeSTEP.toFixed(0);
+
+        var iDegreePosition = 360 - iDegreeSTEP;
         elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
 
         document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP.toFixed(0);
