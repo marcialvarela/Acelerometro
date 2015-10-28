@@ -349,7 +349,7 @@ function onSuccessCompassMapSTEP(heading) {
 
         document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP;
         document.getElementById('STEPDegree').innerHTML = iDegreeSTEP;
-        document.getElementById('STEPCalcDegree').innerHTML = calculateDegrees(iDiffDegreeSTEP);
+        document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP;
 
 
     }
