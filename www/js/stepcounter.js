@@ -3,6 +3,7 @@
  */
 
 var watchID_STEP = null;
+var watchID_STEP2 = null;
 var MAX_x =0;
 var MAX_y =0;
 var MAX_z =0;
@@ -269,11 +270,11 @@ function onSuccessWatchStep2(acceleration) {
 function paintStep()
 {
     try{
-        startWatchMapSTEP();    // Inicializa el puntero del mapa (Compass)
-        stepCounterIni();
+        startCompassMapSTEP();    // Inicializa el puntero del mapa (Compass)
+        //stepCounterIni();
 
         var options = { frequency: 300 }
-        watchID_STEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
+        watchID_COMPASSSTEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -281,16 +282,18 @@ function paintStep()
 function stopStep(){
 
     try{
-        //STOP CHRONO
-        stopWatchMapSTEP();
-
-        clearTimeout(timerID);
-        clearCounter();
-
-        if (watchID_STEP) {
-            navigator.compass.clearWatch(watchID_STEP);
-            watchID_STEP = null;
+        //STOP Brujula mapa
+        if (watchID_COMPASSSTEP) {
+            navigator.compass.clearWatch(watchID_COMPASSSTEP);
+            watchID_COMPASSSTEP = null;
         }
+
+        //STOP CHRONO
+        stopCompassMapSTEP();
+
+        //clearTimeout(timerID);
+        //clearCounter();
+
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -303,8 +306,9 @@ function stopStep(){
 var watchID_COMPASSSTEP = null;
 var iDiffDegreeSTEP = 0;
 var iDegreeFIX_STEP = 0;
+var iniDegree = 0;
 
-function startWatchMapSTEP() {
+function startCompassMapSTEP() {
 
     // Update compass every 3 seconds
     try
@@ -316,7 +320,7 @@ function startWatchMapSTEP() {
     catch (ex9){alert('Error startWatchMapSTEP: '+ex9.message);}
 }
 
-function stopWatchMapSTEP() {
+function stopCompassMapSTEP() {
     try {
         if (watchID_COMPASSSTEP) {
             navigator.compass.clearWatch(watchID_COMPASSSTEP);
@@ -335,13 +339,21 @@ function onSuccessCompassMapSTEP(heading) {
         //var elemPointPos = document.getElementById('divPosition');
 
         iDegreeSTEP = degrees;
-        if (iDegreeFIX_STEP == 0){
+        if(iniDegree == 0){
             iDegreeFIX_STEP = 360 - iDegreeSTEP;
+            iniDegree =1;
         }
+        else{
+            iDegreeFIX_STEP = 0;
+        }
+
         iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
         elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
 
-        document.getElementById('STEPpositionDeg').innerHTML = calculateDegrees(iDiffDegreeSTEP);;
+        document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP;
+        document.getElementById('STEPDegree').innerHTML = iDegreeSTEP;
+        document.getElementById('STEPCalcDegree').innerHTML = calculateDegrees(iDiffDegreeSTEP);
+
 
     }
     catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}

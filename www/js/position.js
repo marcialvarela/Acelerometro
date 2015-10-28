@@ -452,9 +452,9 @@ function enableInputs(){
                 accelerationY=evt.accelerationIncludingGravity.y;
                 accelerationZ=evt.accelerationIncludingGravity.z;
                 //MVL
-                XpositionLabel.innerHTML = accelerationX.toFixed(2);
-                YpositionLabel.innerHTML = accelerationY.toFixed(2);
-                ZpositionLabel.innerHTML = accelerationZ.toFixed(2);
+                //XpositionLabel.innerHTML = accelerationX.toFixed(2);
+                //YpositionLabel.innerHTML = accelerationY.toFixed(2);
+                //ZpositionLabel.innerHTML = accelerationZ.toFixed(2);
 
             },false);
         }
