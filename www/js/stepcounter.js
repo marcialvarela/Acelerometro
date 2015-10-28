@@ -210,11 +210,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
     //Ver dirección de la brújula y pintar linea
 
     //Calcular X e Y en funcion de los grados
-    //XpositionDeg
-    //YpositionDeg
-    //var y = Math.sin(p_degree)*10;
-    var y = 10*-1;
-    var x = (Math.cos(p_degree - 90)*10)*-1;
+    var y = 10; //Math.sin(p_degree)*10;
+    var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
 
     p_x =  p_ant_x + x;
     p_y =  p_ant_y + y;
@@ -275,6 +272,7 @@ function stopStep(){
         //STOP CHRONO
         clearTimeout(timerID);
         clearCounter();
+
         if (watchID_STEP) {
             navigator.compass.clearWatch(watchID_STEP);
             watchID_STEP = null;
