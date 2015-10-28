@@ -335,6 +335,7 @@ function onSuccessCompassMapSTEP(heading) {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
 
+        var iINIDegree = 0;// 360; // Tambien puede ser 0
 
        //document.getElementById('ChronoPos').innerHTML = degrees.toFixed(0);
 
@@ -354,7 +355,7 @@ function onSuccessCompassMapSTEP(heading) {
         if (iDiffDegreeSTEP <0 ){
             iDiffDegreeSTEP = iDiffDegreeSTEP * (-1);
         }
-        var iDegreePosition = iDegreeSTEP + iDiffDegreeSTEP;
+        var iDegreePosition = 360 - (iDegreeFIX_STEP + iDiffDegreeSTEP);
         elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
 
         document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP.toFixed(0);
