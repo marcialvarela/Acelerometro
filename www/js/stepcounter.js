@@ -213,8 +213,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
     //XpositionDeg
     //YpositionDeg
     //var y = Math.sin(p_degree)*10;
-    var y = 10;
-    var x = Math.cos(p_degree)*10;
+    var y = 10*-1;
+    var x = (Math.cos(p_degree - 90)*10)*-1;
 
     p_x =  p_ant_x + x;
     p_y =  p_ant_y + y;
