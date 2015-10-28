@@ -344,12 +344,13 @@ function onSuccessCompassMapSTEP(heading) {
         }
         iniDegree =1;
 
-        iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
+        //iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
+        iDiffDegreeSTEP = iDegreeFIX_STEP - iDegreeSTEP;
         elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
 
-        document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP;
-        document.getElementById('STEPDegree').innerHTML = iDegreeSTEP;
-        document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP;
+        document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP.toFixed(2);
+        document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(2);
+        document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP.toFixed(2);
 
 
     }
