@@ -335,7 +335,7 @@ function onSuccessCompassMapSTEP(heading) {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
 
-        var iINIDegree = degrees;// 360; // Tambien puede ser 0
+        var iINIDegreeFixed = 0;// 360; // Tambien puede ser 0
 
        //document.getElementById('ChronoPos').innerHTML = degrees.toFixed(0);
 
@@ -346,10 +346,15 @@ function onSuccessCompassMapSTEP(heading) {
         if(iniDegree == 0){
             if(iDegreeSTEP != 360){
                 iDegreeFIX_STEP = 360 - iDegreeSTEP;
+                iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
+                if (iDiffDegreeSTEP <0 ){
+                    iINIDegreeFixed = iDiffDegreeSTEP * (-1);
+                }
                 iniDegree =1;
             }
         }
 
+        // La primera posicion en el eje de las Y ha de ser iDegreeSTEP + iDiffDegreeSTEP de la primera lectura
 
         iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
         if (iDiffDegreeSTEP <0 ){
@@ -357,7 +362,7 @@ function onSuccessCompassMapSTEP(heading) {
         }
         //document.getElementById('ChronoPos').innerHTML = iDiffDegreeSTEP.toFixed(0);
 
-        var iDegreePosition = iDegreeSTEP;
+        var iDegreePosition = iDegreeSTEP + iINIDegreeFixed;
         elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
 
         document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP.toFixed(0);
