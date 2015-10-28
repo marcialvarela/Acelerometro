@@ -361,6 +361,7 @@ function stopWatch() {
  /* ****************************************************************************************** */
 var time=0;
 var iDegreeSTEP = 0;
+var iDiffDegreeSTEP = 0;
 
 var canvas=null,ctx=null;
 var ctxPoint=null;
@@ -547,7 +548,9 @@ function onSuccessCompassMap(heading) {
         var elemPoint = document.getElementById('divPoint');
         //var iDeg = degrees;
         iDegreeSTEP = degrees;
-        elemPoint.style.transform = "rotate("+ iDegreeSTEP +"deg)";
+        iDiffDegreeSTEP = 360 - iDegreeSTEP;
+        //elemPoint.style.transform = "rotate("+ iDegreeSTEP +"deg)";
+        elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
 
         var element = document.getElementById('STEPpositionDeg');
         element.innerHTML = calculateDegrees(iDegreeSTEP);
