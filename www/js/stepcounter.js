@@ -336,20 +336,26 @@ function onSuccessCompassMapSTEP(heading) {
         var degrees = heading.magneticHeading;
 
 
-
-        document.getElementById('ChronoPos').innerHTML = degrees.toFixed(0);
+       //document.getElementById('ChronoPos').innerHTML = degrees.toFixed(0);
 
         var elemPoint = document.getElementById('divPoint');
         //var elemPointPos = document.getElementById('divPosition');
 
         iDegreeSTEP = degrees;
         if(iniDegree == 0){
-            iDegreeFIX_STEP = 360 - iDegreeSTEP;
+            if(iniDegree != 360){
+                iDegreeFIX_STEP = 360 - iDegreeSTEP;
+                iniDegree =1;
+            }
         }
-        iniDegree =1;
+
 
         iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
-        elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
+        if (iDiffDegreeSTEP <0 ){
+            iDiffDegreeSTEP = iDiffDegreeSTEP * (-1);
+        }
+        var iDegreePosition = iDegreeSTEP + iDiffDegreeSTEP;
+        elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
 
         document.getElementById('STEPiniDeg').innerHTML = iDegreeFIX_STEP.toFixed(0);
         document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
