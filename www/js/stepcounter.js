@@ -341,11 +341,8 @@ function onSuccessCompassMapSTEP(heading) {
         iDegreeSTEP = degrees;
         if(iniDegree == 0){
             iDegreeFIX_STEP = 360 - iDegreeSTEP;
-            iniDegree =1;
         }
-        else{
-            iDegreeFIX_STEP = 0;
-        }
+        iniDegree =1;
 
         iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
         elemPoint.style.transform = "rotate("+ iDiffDegreeSTEP +"deg)";
