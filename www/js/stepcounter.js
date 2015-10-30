@@ -307,6 +307,8 @@ var watchID_COMPASSSTEP = null;
 var iDiffDegreeSTEP = 0;
 var iDegreeFIX_STEP = 0;
 var iniDegree = 0;
+var iDegreeINICIAL_STEP = 0;
+
 
 function startCompassMapSTEP() {
 
@@ -334,45 +336,31 @@ function onSuccessCompassMapSTEP(heading) {
     try {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
-        alert(degrees);
 
         var iINIDegreeFixed = 0;// 360; // Tambien puede ser 0
 
-       //document.getElementById('ChronoPos').innerHTML = degrees.toFixed(0);
-
-        var elemPoint = document.getElementById('divPoint');
-        //var elemPointPos = document.getElementById('divPosition');
-
-        iDegreeSTEP = degrees;
         if(iniDegree == 0){
-            if(iDegreeSTEP != 360){
-                iDegreeFIX_STEP = 360 - iDegreeSTEP;
-                iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
-                if (iDiffDegreeSTEP <0 ){
-                    iINIDegreeFixed = iDiffDegreeSTEP * (-1);
+            iniDegree = 1;
+        }else{
+            if(iniDegree == 1){
+                if(iDegreeINICIAL_STEP == 0){
+                    iDegreeINICIAL_STEP = degrees;
                 }
-                else{
-                    iINIDegreeFixed = iDiffDegreeSTEP;
-                }
-                iniDegree =1;
+
+                var elemPoint = document.getElementById('divPoint');
+                //var elemPointPos = document.getElementById('divPosition');
+
+                iDegreeSTEP = degrees;
+
+                var iDegreePosition = 360 - iDegreeINICIAL_STEP;
+                elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
+
+                document.getElementById('STEPiniDeg').innerHTML = iINIDegreeFixed.toFixed(0);
+                document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
+                document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP.toFixed(0);
+
             }
         }
-
-        // La primera posicion en el eje de las Y ha de ser iDegreeSTEP + iDiffDegreeSTEP de la primera lectura
-
-        iDiffDegreeSTEP = iDegreeSTEP - iDegreeFIX_STEP;
-        if (iDiffDegreeSTEP <0 ){
-            iDiffDegreeSTEP = iDiffDegreeSTEP * (-1);
-        }
-        //document.getElementById('ChronoPos').innerHTML = iDiffDegreeSTEP.toFixed(0);
-
-        var iDegreePosition = iDegreeSTEP + iINIDegreeFixed;
-        elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
-
-        document.getElementById('STEPiniDeg').innerHTML = iINIDegreeFixed.toFixed(0);
-        document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
-        document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP.toFixed(0);
-
 
     }
     catch (ex9) {alert('Error onSuccessCompassMap: ' + ex9.message);}
