@@ -313,7 +313,7 @@ function startCompassMapSTEP() {
     // Update compass every 3 seconds
     try
     {
-        var compassOptionsMap = { frequency: 300 };
+        var compassOptionsMap = { frequency: 500 };
         watchID_COMPASSSTEP = navigator.compass.watchHeading(onSuccessCompassMapSTEP, onErrorCompassMapSTEP, compassOptionsMap);
 
     }
@@ -334,6 +334,7 @@ function onSuccessCompassMapSTEP(heading) {
     try {
         var element = document.getElementById('heading');
         var degrees = heading.magneticHeading;
+        alert(degrees);
 
         var iINIDegreeFixed = 0;// 360; // Tambien puede ser 0
 
