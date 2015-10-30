@@ -352,7 +352,7 @@ function onSuccessCompassMapSTEP(heading) {
 
                 iDegreeSTEP = degrees;
 
-                var iDegreePosition = 360 - iDegreeINICIAL_STEP;
+                var iDegreePosition = iDegreeSTEP - iDegreeINICIAL_STEP;
                 elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
 
                 document.getElementById('STEPiniDeg').innerHTML = iINIDegreeFixed.toFixed(0);
