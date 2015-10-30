@@ -266,6 +266,13 @@ function onSuccessWatchStep2(acceleration) {
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
 
+function newStep(){
+
+    try{
+        pintaPaso(PointX_a, PointY_a, iDegreePosition_STEP);
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
 
 function paintStep()
 {
@@ -308,6 +315,7 @@ var iDiffDegreeSTEP = 0;
 var iDegreeFIX_STEP = 0;
 var iniDegree = 0;
 var iDegreeINICIAL_STEP = 0;
+var iDegreePosition_STEP = 0;
 
 
 function startCompassMapSTEP() {
@@ -351,9 +359,9 @@ function onSuccessCompassMapSTEP(heading) {
                 //var elemPointPos = document.getElementById('divPosition');
 
                 iDegreeSTEP = degrees;
+                iDegreePosition_STEP = iDegreeSTEP - iDegreeINICIAL_STEP;
 
-                var iDegreePosition = iDegreeSTEP - iDegreeINICIAL_STEP;
-                elemPoint.style.transform = "rotate("+ iDegreePosition +"deg)";
+                elemPoint.style.transform = "rotate("+ iDegreePosition_STEP +"deg)";
 
                 document.getElementById('STEPiniDeg').innerHTML = iINIDegreeFixed.toFixed(0);
                 document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
