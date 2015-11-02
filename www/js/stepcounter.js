@@ -224,6 +224,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //var h = Math.sqrt(c1c2);
 
 
+        alert(p_degree);
         var nDegree = p_degree + 90;
 
         var x_neg=1;
