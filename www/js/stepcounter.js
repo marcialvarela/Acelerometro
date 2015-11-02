@@ -216,20 +216,47 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //Calcular X e Y en funcion de los grados
         //var y = 10 * -1; //Math.sin(p_degree)*10;
         //var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
-        //var c1 = Math.cos(p_degree + 90);
+
+        //Calcular Hipotenusa
+        // var c1 = Math.cos(p_degree + 90);
         //var c2 = Math.sin(p_degree + 90);
         //var c1c2 = (c1 * 2) + (c2 * 2);
         //var h = Math.sqrt(c1c2);
 
 
+        p_degree = 90;
+
+        var x_neg=1;
+        var y_neg=1;
+
+        if(p_degree >= 0 && p_degree <= 180){
+            y_neg = -1;
+        }else{
+            y_neg = 1;
+        }
+
+        if(p_degree >= 90 && p_degree <= 270){
+            x_neg = -1;
+        }
+        else
+        {
+            if(p_degree >= 0 && p_degree <= 90){
+                x_neg = 1;
+            }
+            if(p_degree >= 270 && p_degree <= 360){
+                x_neg = 1;
+            }
+        }
 
         //var y = (Math.sin(p_degree + 90)*myStep);
         //var x = (Math.cos(p_degree + 90)*myStep);
-        var y = Math.sin(90);
-        var x = Math.cos(90);
+        var y = Math.sin(p_degree);
+        var x = Math.cos(p_degree);
 
-        y = -20; //(Math.round(y)) * (myStep) * (-1);
-        x = 0; //(Math.round(x)) * (myStep) * (-1);
+        //y = (Math.round(y)) * (myStep) * (-1);
+        //x = (Math.round(x)) * (myStep) * (-1);
+        y = (Math.round(y)) * (myStep) * (y_neg);
+        x = (Math.round(x)) * (myStep) * (x_neg);
 
         p_x =  p_ant_x + x;
         p_y =  p_ant_y + y;
