@@ -253,8 +253,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
         //var y = (Math.sin(p_degree + 90)*myStep);
         //var x = (Math.cos(p_degree + 90)*myStep);
-        var y = parseInt(Math.sin(nDegree).toFixed(2));
-        var x = parseInt(Math.cos(nDegree).toFixed(2));
+        var y = parseFloat(Math.sin(nDegree).toFixed(2));
+        var x = parseFloat(Math.cos(nDegree).toFixed(2));
 
         alert('Sin: ' + y + ' ; Cos: ' + x);
 
