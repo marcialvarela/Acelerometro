@@ -208,6 +208,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
     //https://www.youtube.com/watch?v=RY_cl4GFM1U
 
     try{
+        var myStep = 20;
         ctx.beginPath();
         ctx.moveTo(p_ant_x, p_ant_y);
         //Ver dirección de la brújula y pintar linea
@@ -215,8 +216,13 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //Calcular X e Y en funcion de los grados
         //var y = 10 * -1; //Math.sin(p_degree)*10;
         //var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
-        var y = (Math.sin(p_degree)*10)*-1;
-        var x = (Math.cos(p_degree)*10)*-1;
+        var c1 = 0; //Math.cos(p_degree);
+        var c2 = Math.sin(p_degree);
+        var c1c2 = (c1 * 2) + (c2 * 2);
+        var h = sqrt(c1c2);
+
+        var y = (Math.sin(p_degree)*myStep)*-1;
+        var x = 0; //(Math.cos(p_degree)*myStep)*-1;
 
         p_x =  p_ant_x + x;
         p_y =  p_ant_y + y;
