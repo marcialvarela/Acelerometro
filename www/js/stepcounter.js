@@ -216,13 +216,13 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //Calcular X e Y en funcion de los grados
         //var y = 10 * -1; //Math.sin(p_degree)*10;
         //var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
-        var c1 = 0; //Math.cos(p_degree);
-        var c2 = Math.sin(p_degree);
-        var c1c2 = (c1 * 2) + (c2 * 2);
-        var h = Math.sqrt(c1c2);
+        //var c1 = Math.cos(p_degree + 90);
+        //var c2 = Math.sin(p_degree + 90);
+        //var c1c2 = (c1 * 2) + (c2 * 2);
+        //var h = Math.sqrt(c1c2);
 
-        var y = (Math.sin(p_degree)*myStep)*-1;
-        var x = 0; //(Math.cos(p_degree)*myStep)*-1;
+        var y = (Math.sin(p_degree + 90)*myStep)*-1;
+        var x = (Math.cos(p_degree + 90)*myStep)*-1;
 
         p_x =  p_ant_x + x;
         p_y =  p_ant_y + y;
