@@ -240,9 +240,9 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         if(nDegree >= 0 && nDegree <= 180){
             y_neg = -1;
             if(nDegree >= 0 && nDegree <= 90) {
-                x_neg = 1;
-            }else if(nDegree > 90 && nDegree <= 180) {
                 x_neg = -1;
+            }else if(nDegree > 90 && nDegree <= 180) {
+                x_neg = 1;
             }
         }
         else
@@ -251,15 +251,16 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
                 y_neg = 1;
             }
             if(nDegree > 180 && nDegree <= 270) {
-                x_neg = -1;
-            }else if(nDegree > 270 && nDegree <= 360) {
                 x_neg = 1;
+            }else if(nDegree > 270 && nDegree <= 360) {
+                x_neg = -1;
             }
         }
 
         //var y = Math.sin(nDegree);
         //var x = Math.cos(nDegree);
 
+        //http://www.comptechdoc.org/independent/web/cgi/javamanual/javamath.html
         var y = Math.sin(nDegree * Math.PI/180)
         var x = Math.cos(nDegree * Math.PI/180);
 
