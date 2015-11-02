@@ -359,6 +359,7 @@ function onSuccessCompassMapSTEP(heading) {
             if(iniDegree == 1){
                 if(iDegreeINICIAL_STEP == 0){
                     iDegreeINICIAL_STEP = degrees;
+                    document.getElementById('ChronoPos').innerHTML = iDegreeINICIAL_STEP.toFixed(0);
                 }
 
                 var elemPoint = document.getElementById('divPoint');
