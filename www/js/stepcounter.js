@@ -222,6 +222,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //var h = Math.sqrt(c1c2);
 
 
+
         //var y = (Math.sin(p_degree + 90)*myStep);
         //var x = (Math.cos(p_degree + 90)*myStep);
         var y = (Math.sin(90)*myStep)*-1;
@@ -232,6 +233,10 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
         ctx.lineTo(p_x, p_y);
         ctx.lineWidth = 5;
+
+        var sDeA = 'De X:' + p_ant_x + ' ,Y:' + p_ant_y + '&nbsp;&nbsp; a X:' + p_x + ' ,Y:' + p_y;
+        document.getElementById('STEPCoord').innerHTML = sDeA;
+
 
         // Azul: #385D8A
         // Naranja: #F97912
