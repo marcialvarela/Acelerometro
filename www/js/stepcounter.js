@@ -399,20 +399,20 @@ function onSuccessCompassMapSTEP(heading) {
         }else{
             if(iniDegree == 1){
                 if(iDegreeINICIAL_STEP == 0){
-                    iDegreeINICIAL_STEP = degrees;
+                    iDegreeINICIAL_STEP = parseInt(degrees.toFixed(0))
                 }
 
                 var elemPoint = document.getElementById('divPoint');
                 //var elemPointPos = document.getElementById('divPosition');
 
-                iDegreeSTEP = degrees;
-                iDegreePosition_STEP = iDegreeSTEP - iDegreeINICIAL_STEP;
+                iDegreeSTEP = parseInt(degrees.toFixed(0));
+                iDegreePosition_STEP = parseInt((iDegreeSTEP - iDegreeINICIAL_STEP).toFixed(0));
 
                 elemPoint.style.transform = "rotate("+ iDegreePosition_STEP +"deg)";
 
-                document.getElementById('STEPiniDeg').innerHTML = iDegreeINICIAL_STEP.toFixed(0);
-                document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
-                document.getElementById('STEPCalcDegree').innerHTML = iDegreePosition_STEP.toFixed(0);
+                document.getElementById('STEPiniDeg').innerHTML = iDegreeINICIAL_STEP; //.toFixed(0);
+                document.getElementById('STEPDegree').innerHTML = iDegreeSTEP;//.toFixed(0);
+                document.getElementById('STEPCalcDegree').innerHTML = iDegreePosition_STEP;//.toFixed(0);
 
             }
         }
