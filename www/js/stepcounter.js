@@ -359,7 +359,6 @@ function onSuccessCompassMapSTEP(heading) {
             if(iniDegree == 1){
                 if(iDegreeINICIAL_STEP == 0){
                     iDegreeINICIAL_STEP = degrees;
-                    document.getElementById('ChronoPos').innerHTML = iDegreeINICIAL_STEP.toFixed(0);
                 }
 
                 var elemPoint = document.getElementById('divPoint');
@@ -370,9 +369,9 @@ function onSuccessCompassMapSTEP(heading) {
 
                 elemPoint.style.transform = "rotate("+ iDegreePosition_STEP +"deg)";
 
-                document.getElementById('STEPiniDeg').innerHTML = iINIDegreeFixed.toFixed(0);
+                document.getElementById('STEPiniDeg').innerHTML = iDegreeINICIAL_STEP.toFixed(0);
                 document.getElementById('STEPDegree').innerHTML = iDegreeSTEP.toFixed(0);
-                document.getElementById('STEPCalcDegree').innerHTML = iDiffDegreeSTEP.toFixed(0);
+                document.getElementById('STEPCalcDegree').innerHTML = iDegreePosition_STEP.toFixed(0);
 
             }
         }
