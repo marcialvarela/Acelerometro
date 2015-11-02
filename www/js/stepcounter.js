@@ -201,6 +201,10 @@ function step_OLD(){
 /* ******************************************************************** */
 /*              P A I N T   S T E P
 /* ******************************************************************** */
+function sinDegrees(angle) {
+    //return Math.sin(angle/180*Math.PI);
+
+};
 
 function pintaPaso(p_ant_x, p_ant_y, p_degree)
 {
@@ -253,8 +257,12 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
             }
         }
 
-        var y = Math.sin(nDegree);
-        var x = Math.cos(nDegree);
+        //var y = Math.sin(nDegree);
+        //var x = Math.cos(nDegree);
+
+        var y = Math.sin(nDegree * Math.PI/180)
+        var x = Math.cos(nDegree * Math.PI/180);
+
         //var y = parseFloat(Math.sin(nDegree).toFixed(2));
         //var x = parseFloat(Math.cos(nDegree).toFixed(2));
 
