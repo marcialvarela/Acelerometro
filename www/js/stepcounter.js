@@ -226,7 +226,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
         var nDegree = p_degree + 90;
 
-        alert('degree: ' + p_degree + '; degree+: ' + nDegree);
+        //alert('degree: ' + p_degree + '; degree+: ' + nDegree);
 
         var x_neg=1;
         var y_neg=1;
@@ -255,6 +255,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //var x = (Math.cos(p_degree + 90)*myStep);
         var y = Math.sin(nDegree);
         var x = Math.cos(nDegree);
+
+        alert('Sin: ' + y + ' ; Cos: ' + x);
 
         //y = (Math.round(y)) * (myStep) * (-1);
         //x = (Math.round(x)) * (myStep) * (-1);
