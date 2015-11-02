@@ -155,19 +155,31 @@
                     <!-- ----------------------------------------------------- -->
 
                     <div id="divMapLabel" style="visibility: hidden; z-index: 1;position: fixed;top:50px;left:0px;font-size: xx-large" >
-                        <span id="ChronoPos" style="width: 300px">0:00:000</span>&nbsp;
-                        <button onclick="paintStep();" style="font-size: xx-large">START</button>&nbsp;
-                        <button onclick="stopStep();" style="font-size: xx-large">STOP</button>&nbsp;
-                        <button onclick="newStep();" style="font-size: xx-large">STEP</button>&nbsp;
-                        <br/>
-                        <!--
-                        X: <span id="XpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="XpositionDeg" style="width: 150px">0</span><br/>
-                        Y: <span id="YpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="YpositionDeg" style="width: 150px">0</span><br/>
-                        Z: <span id="ZpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="STEPpositionDeg" style="width: 150px">0</span><br/>
-                        -->
-                        Ini.Deg:&nbsp;<span id="STEPiniDeg" style="width: 150px">0</span><br/>
-                        Degree:&nbsp;&nbsp;<span id="STEPDegree" style="width: 150px">0</span><br/>
-                        Deg.Cal:&nbsp;<span id="STEPCalcDegree" style="width: 150px">0</span><br/>
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <span id="ChronoPos" style="width: 300px">0:00:000</span>&nbsp;
+                                    <button onclick="paintStep();" style="font-size: xx-large">START</button>&nbsp;
+                                    <button onclick="stopStep();" style="font-size: xx-large">STOP</button>&nbsp;
+                                    <button onclick="newStep();" style="font-size: xx-large">STEP</button>&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%" align="left">
+                                    <!--
+                                    X: <span id="XpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="XpositionDeg" style="width: 150px">0</span><br/>
+                                    Y: <span id="YpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="YpositionDeg" style="width: 150px">0</span><br/>
+                                    Z: <span id="ZpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="STEPpositionDeg" style="width: 150px">0</span><br/>
+                                    -->
+                                    Ini.Deg:&nbsp;<span id="STEPiniDeg" style="width: 150px">0</span><br/>
+                                    Degree:&nbsp;&nbsp;<span id="STEPDegree" style="width: 150px">0</span><br/>
+                                    Deg.Cal:&nbsp;<span id="STEPCalcDegree" style="width: 150px">0</span><br/>
+                                </td>
+                                <td style="width: 50%">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <div id="divMapFixed" style="visibility: hidden; z-index: 1;position: fixed;top:0px;left:0px" >
                         <img id="mapFixed" src="img/mapa1.png" width="478px" height="612px;" style="z-index: 99">
