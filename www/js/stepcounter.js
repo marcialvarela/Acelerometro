@@ -224,8 +224,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
         //var y = (Math.sin(p_degree + 90)*myStep);
         //var x = (Math.cos(p_degree + 90)*myStep);
-        var y = (Math.sin(90)*myStep);
-        var x = (Math.cos(90)*myStep);
+        var y = (Math.sin(90)*myStep)*-1;
+        var x = (Math.cos(90)*myStep)*-1;
 
         p_x =  p_ant_x + x;
         p_y =  p_ant_y + y;
