@@ -257,6 +257,8 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
             }
         }
 
+        alert('x_neg: ' + x_neg + ' ; y_neg: ' + y_neg);
+
         //var y = Math.sin(nDegree);
         //var x = Math.cos(nDegree);
 
@@ -267,7 +269,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         //var y = parseFloat(Math.sin(nDegree).toFixed(2));
         //var x = parseFloat(Math.cos(nDegree).toFixed(2));
 
-        alert('Sin: ' + y + ' ; Cos: ' + x);
+        //alert('Sin: ' + y + ' ; Cos: ' + x);
 
         //y = (Math.round(y)) * (myStep) * (-1);
         //x = (Math.round(x)) * (myStep) * (-1);
