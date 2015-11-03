@@ -230,10 +230,6 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
 
         var nDegree = p_degree + 90;
 
-        alert('nDegree: ' + nDegree);
-
-        //alert('degree: ' + p_degree + '; degree+: ' + nDegree);
-
         var x_neg=1;
         var y_neg=1;
 
@@ -249,15 +245,19 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         {
             if(nDegree > 180 && nDegree <= 360){
                 y_neg = 1;
+                if(nDegree > 180 && nDegree <= 270) {
+                    x_neg = 1;
+                }else if(nDegree > 270 && nDegree <= 360) {
+                    x_neg = -1;
+                }
             }
-            if(nDegree > 180 && nDegree <= 270) {
-                x_neg = 1;
-            }else if(nDegree > 270 && nDegree <= 360) {
+            if(nDegree < 0 ){
+                y_neg = -1;
                 x_neg = -1;
             }
         }
 
-        alert('x_neg: ' + x_neg + ' ; y_neg: ' + y_neg);
+        alert('nDegree: ' + nDegree +' ; x_neg: ' + x_neg + ' ; y_neg: ' + y_neg);
 
         //var y = Math.sin(nDegree);
         //var x = Math.cos(nDegree);

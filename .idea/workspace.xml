@@ -98,8 +98,8 @@
       <file leaf-file-name="stepcounter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/stepcounter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6344486" vertical-offset="3891" max-vertical-offset="7633">
-              <caret line="259" column="56" selection-start-line="259" selection-start-column="56" selection-end-line="259" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.7608426" vertical-offset="3789" max-vertical-offset="7633">
+              <caret line="259" column="41" selection-start-line="259" selection-start-column="41" selection-end-line="259" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -1635,8 +1635,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/stepcounter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6344486" vertical-offset="3891" max-vertical-offset="7633">
-          <caret line="259" column="56" selection-start-line="259" selection-start-column="56" selection-end-line="259" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.7608426" vertical-offset="3789" max-vertical-offset="7633">
+          <caret line="259" column="41" selection-start-line="259" selection-start-column="41" selection-end-line="259" selection-end-column="41" />
           <folding />
         </state>
       </provider>
