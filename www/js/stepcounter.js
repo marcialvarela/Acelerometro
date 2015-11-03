@@ -242,7 +242,7 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
             if(nDegree >= 0 && nDegree <= 90) {
                 x_neg = -1;
             }else if(nDegree > 90 && nDegree <= 180) {
-                x_neg = 1;
+                x_neg = -1;
             }
         }
         else
