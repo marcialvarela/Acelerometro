@@ -161,7 +161,7 @@
                                     <span id="ChronoPos" style="width: 300px">0:00:000</span>
                                     <button onclick="paintStep();" style="font-size: xx-large">START</button>
                                     <button onclick="stopStep();" style="font-size: xx-large">STOP</button>
-                                    <button onclick="newStep();" style="font-size: xx-large">STEP</button>
+                                    <button onclick="newStep_Time();" style="font-size: xx-large">STEP</button>
                                 </td>
                             </tr>
                             <tr>
@@ -171,10 +171,12 @@
                                     Y: <span id="YpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="YpositionDeg" style="width: 150px">0</span><br/>
                                     Z: <span id="ZpositionLabel" style="width: 300px">0</span>&nbsp;&nbsp;<span id="STEPpositionDeg" style="width: 150px">0</span><br/>
                                     -->
-                                    Coord.:&nbsp;<span id="STEPCoord" style="width: 150px"></span><br/>
-                                    Ini.Deg:&nbsp;<span id="STEPiniDeg" style="width: 150px">0</span><br/>
-                                    Degree:&nbsp;&nbsp;<span id="STEPDegree" style="width: 150px">0</span><br/>
-                                    Deg.Cal:&nbsp;<span id="STEPCalcDegree" style="width: 150px">0</span><br/>
+                                    <div id="valuesCoor" style="visibility: hidden;">
+                                        Coord.:&nbsp;<span id="STEPCoord" style="width: 150px"></span><br/>
+                                        Ini.Deg:&nbsp;<span id="STEPiniDeg" style="width: 150px">0</span><br/>
+                                        Degree:&nbsp;&nbsp;<span id="STEPDegree" style="width: 150px">0</span><br/>
+                                        Deg.Cal:&nbsp;<span id="STEPCalcDegree" style="width: 150px">0</span><br/>
+                                    </div>
                                 </td>
                             </tr>
                         </table>

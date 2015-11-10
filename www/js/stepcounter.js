@@ -201,10 +201,6 @@ function step_OLD(){
 /* ******************************************************************** */
 /*              P A I N T   S T E P
 /* ******************************************************************** */
-function sinDegrees(angle) {
-    //return Math.sin(angle/180*Math.PI);
-
-};
 
 function pintaPaso(p_ant_x, p_ant_y, p_degree)
 {
@@ -215,18 +211,6 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         var myStep = 20;
         ctx.beginPath();
         ctx.moveTo(p_ant_x, p_ant_y);
-        //Ver dirección de la brújula y pintar linea
-
-        //Calcular X e Y en funcion de los grados
-        //var y = 10 * -1; //Math.sin(p_degree)*10;
-        //var x = 0; // (Math.cos(p_degree - 90)*10)*-1;
-
-        //Calcular Hipotenusa
-        // var c1 = Math.cos(p_degree + 90);
-        //var c2 = Math.sin(p_degree + 90);
-        //var c1c2 = (c1 * 2) + (c2 * 2);
-        //var h = Math.sqrt(c1c2);
-
 
         var nDegree = p_degree + 90;
 
@@ -257,22 +241,11 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
             }
         }
 
-        alert('nDegree: ' + nDegree +' ; x_neg: ' + x_neg + ' ; y_neg: ' + y_neg);
-
-        //var y = Math.sin(nDegree);
-        //var x = Math.cos(nDegree);
+        //alert('nDegree: ' + nDegree +' ; x_neg: ' + x_neg + ' ; y_neg: ' + y_neg);
 
         //http://www.comptechdoc.org/independent/web/cgi/javamanual/javamath.html
         var y = Math.sin(nDegree * Math.PI/180)
         var x = Math.cos(nDegree * Math.PI/180);
-
-        //var y = parseFloat(Math.sin(nDegree).toFixed(2));
-        //var x = parseFloat(Math.cos(nDegree).toFixed(2));
-
-        //alert('Sin: ' + y + ' ; Cos: ' + x);
-
-        //y = (Math.round(y)) * (myStep) * (-1);
-        //x = (Math.round(x)) * (myStep) * (-1);
         y = (y) * (myStep) * (y_neg);
         x = (x) * (myStep) * (x_neg);
 
@@ -282,10 +255,10 @@ function pintaPaso(p_ant_x, p_ant_y, p_degree)
         ctx.lineTo(p_x, p_y);
         ctx.lineWidth = 5;
 
-
-
+        // Color del camino:
         // Azul: #385D8A
         // Naranja: #F97912
+
         ctx.strokeStyle = '#F97912';// set line color
         ctx.stroke();
 
@@ -315,7 +288,7 @@ function onSuccessWatchStep2(acceleration) {
             if((PointX_a > margeWindow && PointX_a <canvas.width - margeWindow)
                && (PointY_a > margeWindow && PointY_a <canvas.height - margeWindow) ){
                 // Pintar paso en dirección a la brújula
-                //pintaPaso(PointX_a, PointY_a, iDiffDegreeSTEP);
+                pintaPaso(PointX_a, PointY_a, iDegreePosition_STEP);
             }
         }
         else{
@@ -338,11 +311,19 @@ function newStep(){
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
 
+function newStep_Time(){
+
+    try{
+        pintaPaso(PointX_a, PointY_a, iDegreePosition_STEP);
+    }
+    catch (ex9){alert('Error exception: '+ex9.message);}
+}
+
 function paintStep()
 {
     try{
         startCompassMapSTEP();    // Inicializa el puntero del mapa (Compass)
-        //stepCounterIni();
+        stepCounterIni();
 
         var options = { frequency: 300 }
         watchID_COMPASSSTEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
@@ -420,7 +401,6 @@ function onSuccessCompassMapSTEP(heading) {
                 }
 
                 var elemPoint = document.getElementById('divPoint');
-                //var elemPointPos = document.getElementById('divPosition');
 
                 iDegreeSTEP = parseInt(degrees.toFixed(0));
                 iDegreePosition_STEP = parseInt((iDegreeSTEP - iDegreeINICIAL_STEP).toFixed(0));
