@@ -334,17 +334,19 @@ function paintStep()
 function stopStep(){
 
     try{
+        //if (watchID_COMPASSSTEP) {
+        //    navigator.compass.clearWatch(watchID_COMPASSSTEP);
+        //    watchID_COMPASSSTEP = null;
+        //}
+
+
         //STOP Brujula mapa
-        if (watchID_COMPASSSTEP) {
-            navigator.compass.clearWatch(watchID_COMPASSSTEP);
-            watchID_COMPASSSTEP = null;
-        }
+        navigator.compass.clearWatch(watchID_COMPASSSTEP);
+        watchID_COMPASSSTEP = null;
 
         //STOP CHRONO
-        stopCompassMapSTEP();
-
-        //clearTimeout(timerID);
-        //clearCounter();
+        clearTimeout(timerID);
+        clearCounter();
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
