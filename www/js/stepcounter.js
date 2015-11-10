@@ -334,6 +334,12 @@ function paintStep()
 function stopStep(){
 
     try{
+        alert('stopStep');
+
+        //STOP CHRONO
+        clearTimeout(timerID);
+        clearCounter();
+
         //if (watchID_COMPASSSTEP) {
         //    navigator.compass.clearWatch(watchID_COMPASSSTEP);
         //    watchID_COMPASSSTEP = null;
@@ -344,9 +350,6 @@ function stopStep(){
         navigator.compass.clearWatch(watchID_COMPASSSTEP);
         watchID_COMPASSSTEP = null;
 
-        //STOP CHRONO
-        clearTimeout(timerID);
-        clearCounter();
 
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
