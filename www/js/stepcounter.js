@@ -347,7 +347,8 @@ function stopStep(){
         try{
             ChronoPos.innerHTML = "0:00:000";
             clearTimeout(timerID);
-            timerID = null;
+            start = null;
+            end = null;
         }
         catch (ex1){alert('stopStep CHRONO: '+ex1.message);}
 
