@@ -334,17 +334,6 @@ function paintStep()
 function stopStep(){
 
     try{
-        //STOP CHRONO
-        try{
-            clearTimeout(timerID);
-            timerID = null;
-            ChronoPos.innerHTML = "0:00:000";
-            ChronoPos.innerHTML = "";
-        }
-        catch (ex1){alert('stopStep CHRONO: '+ex1.message);}
-
-
-
         //STOP Brujula mapa
         try{
             if (watchID_COMPASSSTEP_MAP) {
@@ -354,6 +343,13 @@ function stopStep(){
         }
         catch (ex1){alert('stopStep Compass: '+ex1.message);}
 
+        //STOP CHRONO
+        try{
+            ChronoPos.innerHTML = "0:00:000";
+            clearTimeout(timerID);
+            timerID = null;
+        }
+        catch (ex1){alert('stopStep CHRONO: '+ex1.message);}
 
     }
     catch (ex9){alert('Error stopStep: '+ex9.message);}
