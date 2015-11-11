@@ -34,24 +34,26 @@ function millisecondCounter(){
 
     // http://www.proglogic.com/code/javascript/time/chronometer.php
 
-    end = new Date();
-    diff = end - start;
-    diff = new Date(diff);
-    msec = diff.getMilliseconds();
-    sec = diff.getSeconds();
-    if (sec < 10){
-        sec = "0" + sec;
-    }
-    if(msec < 10){
-        msec = "00" +msec;
-    }
-    else if(msec < 100){
-        msec = "0" +msec;
-    }
-    //document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
-    ChronoPos.innerHTML = "0:" + sec + ":" + msec;
+    if (watchID_COMPASSSTEP_MAP != null) {
+        end = new Date();
+        diff = end - start;
+        diff = new Date(diff);
+        msec = diff.getMilliseconds();
+        sec = diff.getSeconds();
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (msec < 10) {
+            msec = "00" + msec;
+        }
+        else if (msec < 100) {
+            msec = "0" + msec;
+        }
+        //document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+        ChronoPos.innerHTML = "0:" + sec + ":" + msec;
 
-    timerID = setTimeout("millisecondCounter()", 10);
+        timerID = setTimeout("millisecondCounter()", 10);
+    }
 }
 
 function stepCounterIni()
@@ -334,25 +336,17 @@ function paintStep()
 function stopStep(){
 
     try{
-        //STOP Brujula mapa
-        try{
-            alert(watchID_COMPASSSTEP_MAP);
-            if (watchID_COMPASSSTEP_MAP) {
-                navigator.accelerometer.clearWatch(watchID_COMPASSSTEP_MAP);
-                watchID_COMPASSSTEP_MAP = null;
-            }
-        }
-        catch (ex1){alert('stopStep Compass: '+ex1.message);}
-
-        //STOP CHRONO
-        try{
+        if (watchID_COMPASSSTEP_MAP != null) {
+            //STOP Brujula mapa
             ChronoPos.innerHTML = "0:00:000";
             clearTimeout(timerID);
             start = null;
             end = null;
-        }
-        catch (ex1){alert('stopStep CHRONO: '+ex1.message);}
 
+            //STOP
+            navigator.accelerometer.clearWatch(watchID_COMPASSSTEP_MAP);
+            watchID_COMPASSSTEP_MAP = null;
+        }
     }
     catch (ex9){alert('Error stopStep: '+ex9.message);}
 }
