@@ -334,8 +334,6 @@ function paintStep()
 function stopStep(){
 
     try{
-        alert('stopStep');
-
         //STOP CHRONO
         try{
             clearTimeout(timerID);
@@ -348,8 +346,7 @@ function stopStep(){
         //STOP Brujula mapa
         try{
             if (watchID_COMPASSSTEP_MAP) {
-                alert('watchID_COMPASSSTEP_MAP');
-                navigator.compass.clearWatch(watchID_COMPASSSTEP_MAP);
+                navigator.accelerometer.clearWatch(watchID_COMPASSSTEP_MAP);
                 watchID_COMPASSSTEP_MAP = null;
             }
         }
