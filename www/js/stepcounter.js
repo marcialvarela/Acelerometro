@@ -337,22 +337,27 @@ function stopStep(){
         alert('stopStep');
 
         //STOP CHRONO
-        clearTimeout(timerID);
-        clearCounter();
+        try{
+            clearTimeout(timerID);
+            ChronoPos.innerHTML = "0:00:000";
+        }
+        catch (ex1){alert('stopStep CHRONO: '+ex1.message);}
 
-        //if (watchID_COMPASSSTEP) {
-        //    navigator.compass.clearWatch(watchID_COMPASSSTEP);
-        //    watchID_COMPASSSTEP = null;
-        //}
 
 
         //STOP Brujula mapa
-        navigator.compass.clearWatch(watchID_COMPASSSTEP);
-        watchID_COMPASSSTEP = null;
+        try{
+            if (watchID_COMPASSSTEP) {
+                alert('watchID_COMPASSSTEP');
+                navigator.compass.clearWatch(watchID_COMPASSSTEP);
+                watchID_COMPASSSTEP = null;
+            }
+        }
+        catch (ex1){alert('stopStep Compass: '+ex1.message);}
 
 
     }
-    catch (ex9){alert('Error exception: '+ex9.message);}
+    catch (ex9){alert('Error stopStep: '+ex9.message);}
 }
 
 
