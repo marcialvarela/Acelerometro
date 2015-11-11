@@ -326,7 +326,7 @@ function paintStep()
         stepCounterIni();
 
         var options = { frequency: 300 }
-        watchID_COMPASSSTEP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
+        watchID_COMPASSSTEP_MAP = navigator.accelerometer.watchAcceleration(onSuccessWatchStep2, onErrorWatchStep, options);
     }
     catch (ex9){alert('Error exception: '+ex9.message);}
 }
@@ -347,10 +347,10 @@ function stopStep(){
 
         //STOP Brujula mapa
         try{
-            if (watchID_COMPASSSTEP) {
-                alert('watchID_COMPASSSTEP');
-                navigator.compass.clearWatch(watchID_COMPASSSTEP);
-                watchID_COMPASSSTEP = null;
+            if (watchID_COMPASSSTEP_MAP) {
+                alert('watchID_COMPASSSTEP_MAP');
+                navigator.compass.clearWatch(watchID_COMPASSSTEP_MAP);
+                watchID_COMPASSSTEP_MAP = null;
             }
         }
         catch (ex1){alert('stopStep Compass: '+ex1.message);}
@@ -366,6 +366,7 @@ function stopStep(){
 /* M O V I M I E N T O    P U N T E R O    M A P A    C O M P A S S   */
 /**********************************************************************/
 var watchID_COMPASSSTEP = null;
+var watchID_COMPASSSTEP_MAP = null;
 var iDiffDegreeSTEP = 0;
 var iDegreeFIX_STEP = 0;
 var iniDegree = 0;
