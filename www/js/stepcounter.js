@@ -336,6 +336,7 @@ function stopStep(){
     try{
         //STOP Brujula mapa
         try{
+            alert(watchID_COMPASSSTEP_MAP);
             if (watchID_COMPASSSTEP_MAP) {
                 navigator.accelerometer.clearWatch(watchID_COMPASSSTEP_MAP);
                 watchID_COMPASSSTEP_MAP = null;
