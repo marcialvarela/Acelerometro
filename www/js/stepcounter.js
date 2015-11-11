@@ -34,26 +34,24 @@ function millisecondCounter(){
 
     // http://www.proglogic.com/code/javascript/time/chronometer.php
 
-    if (watchID_COMPASSSTEP_MAP != null) {
-        end = new Date();
-        diff = end - start;
-        diff = new Date(diff);
-        msec = diff.getMilliseconds();
-        sec = diff.getSeconds();
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-        if (msec < 10) {
-            msec = "00" + msec;
-        }
-        else if (msec < 100) {
-            msec = "0" + msec;
-        }
-        //document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
-        ChronoPos.innerHTML = "0:" + sec + ":" + msec;
-
-        timerID = setTimeout("millisecondCounter()", 10);
+    end = new Date();
+    diff = end - start;
+    diff = new Date(diff);
+    msec = diff.getMilliseconds();
+    sec = diff.getSeconds();
+    if (sec < 10) {
+        sec = "0" + sec;
     }
+    if (msec < 10) {
+        msec = "00" + msec;
+    }
+    else if (msec < 100) {
+        msec = "0" + msec;
+    }
+    //document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+    ChronoPos.innerHTML = "0:" + sec + ":" + msec;
+
+    timerID = setTimeout("millisecondCounter()", 10);
 }
 
 function stepCounterIni()
@@ -336,12 +334,11 @@ function paintStep()
 function stopStep(){
 
     try{
+        alert(watchID_COMPASSSTEP_MAP);
         if (watchID_COMPASSSTEP_MAP != null) {
             //STOP Brujula mapa
             ChronoPos.innerHTML = "0:00:000";
             clearTimeout(timerID);
-            start = null;
-            end = null;
 
             //STOP
             navigator.accelerometer.clearWatch(watchID_COMPASSSTEP_MAP);
